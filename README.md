@@ -33,3 +33,4 @@ else:
 	print sys.argv
 
  ```
+See the [wiki](https://github.com/rfennell/VSTSServiceHookDsl/wiki) for more details
