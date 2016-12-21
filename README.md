@@ -1,4 +1,4 @@
-![Build Status - VSTSServiceHookDsl]https://richardfennell.visualstudio.com/DefaultCollection/_apis/public/build/definitions/670b3a60-2021-47ab-a88b-d76ebd888a2f/13/badge)
+![Build Status - VSTSServiceHookDsl](https://richardfennell.visualstudio.com/DefaultCollection/_apis/public/build/definitions/670b3a60-2021-47ab-a88b-d76ebd888a2f/13/badge)
 
 This project replace the Codeplex Repo [https://tfsalertsdsl.codeplex.com](https://tfsalertsdsl.codeplex.com), which supported the older SOAP based alerts model. If you need to use this older model use this Codeplex project. 
 
@@ -33,3 +33,4 @@ else:
 	print sys.argv
 
  ```
+See the [wiki](https://github.com/rfennell/VSTSServiceHookDsl/wiki) for more details
