@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="__SiteName__" />
+  <setParameter name="EmailDomain" value="__EMAILDOMAIN__" />
+  <setParameter name="LogEventsToFile" value="__LOGEVENTSTOFILE__" />
+  <setParameter name="WorkItemTrackingCacheRoot" value="__WORKITEMTRACKINGCACHEROOT__" />
+  <setParameter name="LoggingFolder" value="__LOGGINGFOLDER__" />
+  <setParameter name="SMTPServer" value="__SMTPSERVER__" />
+  <setParameter name="FromEmail" value="__FROMEMAIL__" />
+  <setParameter name="ScriptFile" value="__SCRIPTFILE__" />
+  <setParameter name="DSLFolder" value="__DSLFOLDER__" />
+  <setParameter name="ScriptFolder" value="__SCRIPTFOLDER__" />
+  <setParameter name="PAT" value="__PAT__" />
+  <setParameter name="PASSWORD" value="__PASSWORD__" />
+</parameters>

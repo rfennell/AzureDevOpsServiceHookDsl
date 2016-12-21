@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="TFSEventsProcessor.DslScriptService" CodeBehind="DslScriptService.svc.cs" %>

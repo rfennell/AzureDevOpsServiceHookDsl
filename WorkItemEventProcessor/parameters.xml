@@ -1,0 +1,53 @@
+﻿<parameters>
+  
+    
+    <parameter name="EmailDomain" description="Description for EmailDomain" defaultvalue="__EMAILDOMAIN__" tags="">
+    <parameterentry kind="XmlFile" scope="\\web.config$" match="/configuration/appSettings/add[@key='EmailDomain']/@value" />
+    </parameter>
+  
+    
+    <parameter name="LogEventsToFile" description="Description for LogEventsToFile" defaultvalue="__LOGEVENTSTOFILE__" tags="">
+    <parameterentry kind="XmlFile" scope="\\web.config$" match="/configuration/appSettings/add[@key='LogEventsToFile']/@value" />
+    </parameter>
+    
+    <parameter name="LoggingFolder" description="Description for LoggingFolder" defaultvalue="__LOGGINGFOLDER__" tags="">
+    <parameterentry kind="XmlFile" scope="\\web.config$" match="/configuration/appSettings/add[@key='LoggingFolder']/@value" />
+    </parameter>
+  
+    
+    <parameter name="SMTPServer" description="Description for SMTPServer" defaultvalue="__SMTPSERVER__" tags="">
+    <parameterentry kind="XmlFile" scope="\\web.config$" match="/configuration/appSettings/add[@key='SMTPServer']/@value" />
+    </parameter>
+  
+    
+    <parameter name="FromEmail" description="Description for FromEmail" defaultvalue="__FROMEMAIL__" tags="">
+    <parameterentry kind="XmlFile" scope="\\web.config$" match="/configuration/appSettings/add[@key='FromEmail']/@value" />
+    </parameter>
+  
+    
+    <parameter name="ScriptFile" description="Description for ScriptFile" defaultvalue="__SCRIPTFILE__" tags="">
+    <parameterentry kind="XmlFile" scope="\\web.config$" match="/configuration/appSettings/add[@key='ScriptFile']/@value" />
+    </parameter>
+  
+    
+    <parameter name="DSLFolder" description="Description for DSLFolder" defaultvalue="__DSLFOLDER__" tags="">
+    <parameterentry kind="XmlFile" scope="\\web.config$" match="/configuration/appSettings/add[@key='DSLFolder']/@value" />
+    </parameter>
+  
+    
+    <parameter name="ScriptFolder" description="Description for ScriptFolder" defaultvalue="__SCRIPTFOLDER__" tags="">
+    <parameterentry kind="XmlFile" scope="\\web.config$" match="/configuration/appSettings/add[@key='ScriptFolder']/@value" />
+    </parameter>
+  
+    
+    <parameter name="PAT" description="Description for PAT" defaultvalue="__PAT__" tags="">
+    <parameterentry kind="XmlFile" scope="\\web.config$" match="/configuration/appSettings/add[@key='PAT']/@value" />
+    </parameter>
+
+   <parameter name="PASSWORD" description="Description for User" defaultvalue="__PASSWORD__" tags="">
+    <parameterentry kind="XmlFile" scope="\\web.config$" match="/configuration/users/add[@key='user1']/@value" />
+   </parameter>
+
+
+
+</parameters>
