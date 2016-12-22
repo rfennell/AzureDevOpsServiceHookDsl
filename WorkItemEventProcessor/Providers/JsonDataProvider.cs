@@ -48,8 +48,16 @@ namespace TFSEventsProcessor.Providers
             }
             catch (NullReferenceException)
             {
-                var allChangedFields = GetWorkItemChangedAlertFields();
-                return allChangedFields.SingleOrDefault(c => c.ReferenceName.Equals("System.ChangedBy")).NewValue;
+                try
+                {
+                    return eventJson["resource"]["fields"]["System.ChangedBy"].ToString();
+                }
+                catch (NullReferenceException)
+                {
+
+                    var allChangedFields = GetWorkItemChangedAlertFields();
+                    return allChangedFields.SingleOrDefault(c => c.ReferenceName.Equals("System.ChangedBy")).NewValue;
+                }
             }
         }
 
@@ -133,11 +141,8 @@ namespace TFSEventsProcessor.Providers
             {
                 case "workitem.updated":
                     return Convert.ToInt32(eventJson["resource"]["revision"]["id"]);
-                case "workitem.created":
-                    return Convert.ToInt32(eventJson["resource"]["id"]);
                 default:
-                    logger.Info(string.Format("TFSEventsProcessor: Unhandled event cannot processed:{0}", GetEventType()));
-                    return -1;
+                    return Convert.ToInt32(eventJson["resource"]["id"]);
             }
         }
 
@@ -213,6 +218,27 @@ namespace TFSEventsProcessor.Providers
             return returnValue;
         }
 
+        internal ReleaseAlertDetails GetReleaseDetails()
+        {
+            var returnValue = new ReleaseAlertDetails();
+            try
+            {
+                returnValue.Id = Convert.ToInt32(eventJson["resource"]["release"]["id"]);
+            } catch (NullReferenceException)
+            {
+                returnValue.Id = Convert.ToInt32(eventJson["resource"]["environment"]["release"]["id"]);
+            }
+            return returnValue;
+        }
+
+        internal MessagePostDetails GetMessagePostDetails()
+        {
+            var returnValue = new MessagePostDetails();
+            returnValue.PostRoomId = Convert.ToInt32(eventJson["resource"]["postedRoomId"]);
+            returnValue.Content = eventJson["resource"]["content"].ToString();
+            return returnValue;
+        }
+
         public WorkItemAlertDetails GetWorkItemDetails()
         {
             var returnValue = new WorkItemAlertDetails();
@@ -222,5 +248,13 @@ namespace TFSEventsProcessor.Providers
             return returnValue;
         }
 
+        internal PullAlertDetails GetPullDetails()
+        {
+            var returnValue = new PullAlertDetails();
+
+            returnValue.Repo = eventJson["resource"]["repository"]["id"].ToString();
+            returnValue.PullId = Convert.ToInt32(eventJson["resource"]["pullRequestId"]);
+            return returnValue;
+        }
     }
 }

@@ -259,6 +259,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlertDetails\ReleaseAlertDetails.cs" />
+    <Compile Include="AlertDetails\MessagePostDetails.cs" />
+    <Compile Include="AlertDetails\PullAlertDetails.cs" />
     <Compile Include="AlertDetails\WorkItemAlertDetails.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />

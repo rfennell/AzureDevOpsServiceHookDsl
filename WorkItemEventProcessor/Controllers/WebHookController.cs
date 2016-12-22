@@ -145,6 +145,9 @@ namespace TFSEventsProcessor.Controllers
                 {
                     case "workitem.updated":
                     case "workitem.created":
+                    case "workitem.deleted":
+                    case "workitem.restored":
+                    case "workitem.commented":
                         var workItemId = dataProvider.GetWorkItemDetails().Id;
                         if (workItemId > 0)
                         {
@@ -166,6 +169,18 @@ namespace TFSEventsProcessor.Controllers
                             "Post: Event being processed for Build:{0}",
                             buildDetails.BuildUri));
                         break;
+                    case "ms.vss-release.deployment-approval-completed-event":
+                    case "ms.vss-release.deployment-approval-pending-event":
+                    case "ms.vss-release.deployment-completed-event":
+                    case "ms.vss-release.deployment-started-event":
+                    case "ms.vss-release.release-abandoned-event":
+                    case "ms.vss-release.release-created-event":
+                        var releaseDetails = dataProvider.GetReleaseDetails();
+                        argItems = new[] { eventType, releaseDetails.Id.ToString() };
+                        logger.Info(string.Format(
+                            "Post: Event being processed for Release:{0}",
+                            releaseDetails.Id));
+                        break;
                     case "tfvc.checkin":
                         var checkInDetails = dataProvider.GetCheckInDetails();
                         argItems = new[] { eventType, checkInDetails.Changeset.ToString() };
@@ -175,15 +190,37 @@ namespace TFSEventsProcessor.Controllers
                                 checkInDetails.Changeset));
 
                         break;
+                    case "message.posted":
+                        var messagePostDetails = dataProvider.GetMessagePostDetails();
+                        argItems = new[] { eventType, messagePostDetails.PostRoomId.ToString() };
+                        logger.Info(
+                            string.Format(
+                                "Post: Event being processed for Meesage Post in Room:{0}",
+                                messagePostDetails.PostRoomId));
+
+                        break;
                     case "git.push":
                         var pushDetails = dataProvider.GetPushDetails();
-                        argItems = new[] { eventType,  pushDetails.Repo, pushDetails.PushId.ToString() };
+                        argItems = new[] { eventType, pushDetails.Repo, pushDetails.PushId.ToString() };
                         logger.Info(
                             string.Format(
                                 "Post: Event being processed for Push:{0}",
                                 pushDetails.PushId));
 
                         break;
+                    case "git.pullrequest.created":
+                    case "git.pullrequest.merged":
+                    case "git.pullrequest.updated":
+                        var pullDetails = dataProvider.GetPullDetails();
+                        argItems = new[] { eventType, pullDetails.Repo, pullDetails.PullId.ToString() };
+                        logger.Info(
+                            string.Format(
+                                "Post: Event being processed for Pull:{0}",
+                                pullDetails.PullId));
+
+                        break;
+
+
                     default:
                         logger.Info(string.Format("Post: Unhandled event cannot processed:{0}", eventType));
                         return new HttpResponseMessage(HttpStatusCode.BadRequest);
@@ -206,7 +243,7 @@ namespace TFSEventsProcessor.Controllers
 
 
                 return new HttpResponseMessage(HttpStatusCode.OK);
-   
+
             }
             catch (Exception ex)
             {
@@ -214,7 +251,7 @@ namespace TFSEventsProcessor.Controllers
                 LoggingHelper.DumpException(logger, ex);
 
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
-         
+
             }
 
 
