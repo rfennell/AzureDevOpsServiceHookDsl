@@ -5,6 +5,8 @@
 //-------------------------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -43,6 +45,31 @@ namespace TFSEventsProcessor.Helpers
                 return result;
             }
             return false;
+        }
+
+        /// <summary>
+        /// Get the global PAT token or one specific to an instane
+        /// </summary>
+        /// <param name="uri">The source URI</param>
+        /// <returns>The PAT if any</returns>
+        internal static string GetPersonalAccessToken(Uri uri)
+        {
+            var pat = Microsoft.Azure.CloudConfigurationManager.GetSetting("PAT");
+            if (string.IsNullOrEmpty(pat))
+            {
+                // check for instance based value
+                var instanceCollection = ConfigurationManager.GetSection("VSTSInstance") as NameValueCollection;
+                if (instanceCollection != null)
+                {
+                    try
+                    {
+                        pat = instanceCollection[uri.Host].ToString();
+                    }
+                    catch (NullReferenceException)
+                    { }
+                }
+            }
+            return pat;
         }
     }
 }

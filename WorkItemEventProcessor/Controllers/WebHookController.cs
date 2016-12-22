@@ -125,7 +125,7 @@ namespace TFSEventsProcessor.Controllers
                 var dataProvider = new Providers.JsonDataProvider(jsondata);
 
                 var uri = dataProvider.GetServerUrl();
-                var pat = Microsoft.Azure.CloudConfigurationManager.GetSetting("PAT");
+                var pat = ConfigHelper.GetPersonalAccessToken(uri);
                 logger.Info(string.Format("Post: Using a {0}", uri));
                 if (string.IsNullOrEmpty(pat) == false)
                 {
