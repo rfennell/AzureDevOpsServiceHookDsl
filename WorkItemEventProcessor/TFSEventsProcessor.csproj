@@ -236,6 +236,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\readme.txt" />
+    <Content Include="dsl\Readme.txt" />
     <Content Include="Global.asax" />
     <None Include="parameters.xml" />
     <Content Include="EmailTemplate.htm" />
@@ -247,6 +249,9 @@
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="scriptfolder\basicscript.py">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -264,12 +269,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Controllers\WebHookController.cs" />
-    <Compile Include="Dsl\DslProcessor.cs" />
+    <Compile Include="dsl\DslProcessor.cs" />
     <Compile Include="AlertDetails\CheckInAlertDetails.cs" />
     <Compile Include="Helpers\ConsoleRedirectStreamToNlog.cs" />
     <Compile Include="Helpers\FolderHelper.cs" />
     <Compile Include="Helpers\LoggingHelper.cs" />
-    <Compile Include="Dsl\IDslLibrary.cs" />
+    <Compile Include="dsl\IDslLibrary.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="AlertDetails\BuildAlertDetails.cs" />
     <Compile Include="Helpers\EmailHelper.cs" />
@@ -286,9 +291,7 @@
     <Compile Include="Providers\TfsFieldLookupProvider.cs" />
     <Compile Include="Providers\TfsProvider.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="NLog.config">
