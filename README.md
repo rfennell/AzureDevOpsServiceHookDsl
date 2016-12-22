@@ -2,6 +2,8 @@
 
 This project replace the Codeplex Repo [https://tfsalertsdsl.codeplex.com](https://tfsalertsdsl.codeplex.com), which supported the older SOAP based alerts model. If you need to use this older model use this Codeplex project. 
 
+Note that there are some breaking changes in the Python scripts between the old SOAP Alerts and this new Service Hooks, they are fairly minor, but you will need to edit any scripts you have for the old project.
+
 # TFS & VSTS Alerts DSL 
 
 Since it's inception Microsoft Team Foundation Server (TFS) provides a SOAP based alerting model where given a certain condition, such as a check-in, work item edit or build completion, an email can be sent to an interest party or a call made to a SOAP based web service. Using this SOAP model it is possible to provide any bespoke operations you wish that are triggered by a change on the TFS server.
