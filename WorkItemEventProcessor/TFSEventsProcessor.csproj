@@ -236,8 +236,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\readme.txt" />
-    <Content Include="dsl\Readme.txt" />
+    <Content Include="App_Data\readme.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dsl\Readme.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Global.asax" />
     <None Include="parameters.xml" />
     <Content Include="EmailTemplate.htm" />
