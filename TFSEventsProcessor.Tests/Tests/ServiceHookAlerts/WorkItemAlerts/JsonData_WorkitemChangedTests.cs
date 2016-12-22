@@ -4,7 +4,7 @@ namespace TFSEventsProcessor.Tests
     using NUnit.Framework;
     using TFSEventsProcessor.Tests.Helpers;
     using TFSEventsProcessor.Helpers;
-
+    using System;
 
     [TestFixture]
     public class JsonData_WorkitemChangedTests
@@ -22,8 +22,8 @@ namespace TFSEventsProcessor.Tests
             // assert
             Assert.AreEqual(9, actual.Count);
             Assert.AreEqual("System.AuthorizedDate", actual[1].ReferenceName);
-            Assert.AreEqual("15/07/2014 16:48:44", actual[1].OldValue);
-            Assert.AreEqual("15/07/2014 17:42:44", actual[1].NewValue);
+            Assert.AreEqual("15/07/2014 04:48:44 PM",  DateTime.Parse(actual[1].OldValue).ToString("dd/MM/yyyy hh:mm:ss tt"));
+            Assert.AreEqual("15/07/2014 05:42:44 PM", DateTime.Parse(actual[1].NewValue).ToString("dd/MM/yyyy hh:mm:ss tt"));
 
         }
 
