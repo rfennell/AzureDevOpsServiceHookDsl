@@ -42,7 +42,7 @@
                 args,
                 tfsProvider.Object,
                 emailProvider.Object,
-                new Providers.JsonDataProvider(ServiceHookTestData.WorkItemUpdatedServiceHook()));
+                new Providers.JsonDataProvider(ServiceHookTestData.GetEventJson("workitem.updated")));
 
             // assert
             emailProvider.Verify(

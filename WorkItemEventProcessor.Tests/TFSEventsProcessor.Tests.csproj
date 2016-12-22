@@ -169,6 +169,48 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\ServiceHookTestData.cs" />
+    <None Include="TestDataFiles\RestData\Alerts\dummy.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestDataFiles\RestData\Alerts\workitem.restored.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestDataFiles\RestData\Alerts\workitem.deleted.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestDataFiles\RestData\Alerts\workitem.commented.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestDataFiles\RestData\Alerts\message.posted.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestDataFiles\RestData\Alerts\ms.vss-release.deployment-started-event.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestDataFiles\RestData\Alerts\ms.vss-release.deployment-completed-event.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestDataFiles\RestData\Alerts\ms.vss-release.deployment-approval-pending-event.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestDataFiles\RestData\Alerts\ms.vss-release.deployment-approval-completed-event.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestDataFiles\RestData\Alerts\ms.vss-release.release-created-event.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestDataFiles\RestData\Alerts\ms.vss-release.release-abandoned-event.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestDataFiles\RestData\Alerts\git.pullrequest.updated.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestDataFiles\RestData\Alerts\git.pullrequest.merged.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestDataFiles\RestData\Alerts\git.pullrequest.created.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="TestDataFiles\RestData\API\GetPushDetails.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

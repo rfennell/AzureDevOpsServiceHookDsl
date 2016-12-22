@@ -13,7 +13,7 @@ namespace TFSEventsProcessor.Tests
         public void Can_read_the_changed_fields_from_changed_alert_json_block()
         {
             // Arrange
-            var alertMessage = ServiceHookTestData.WorkItemUpdatedServiceHook();
+            var alertMessage = ServiceHookTestData.GetEventJson("workitem.updated");
             var provider = new Providers.JsonDataProvider(alertMessage);
 
             // act
@@ -31,7 +31,7 @@ namespace TFSEventsProcessor.Tests
         public void Can_read_the_changed_fields_from_created_alert_json_block()
         {
             // Arrange
-            var alertMessage = ServiceHookTestData.WorkItemCreatedServiceHook();
+            var alertMessage = ServiceHookTestData.GetEventJson("workitem.created");
             var provider = new Providers.JsonDataProvider(alertMessage);
 
             // act
@@ -49,7 +49,7 @@ namespace TFSEventsProcessor.Tests
         public void Can_read_who_changed_the_workitem_from_alert_json_block()
         {
             // Arrange
-            var alertMessage = ServiceHookTestData.WorkItemUpdatedServiceHook();
+            var alertMessage = ServiceHookTestData.GetEventJson("workitem.updated");
             var provider = new Providers.JsonDataProvider(alertMessage);
 
             // act
@@ -64,7 +64,7 @@ namespace TFSEventsProcessor.Tests
         public void Can_read_changed_fields_when_value_set_to_null()
         {
             // Arrange
-            var alertMessage = ServiceHookTestData.WorkItemUpdatedServiceHook();
+            var alertMessage = ServiceHookTestData.GetEventJson("workitem.updated");
             var provider = new Providers.JsonDataProvider(alertMessage);
 
 
@@ -83,7 +83,7 @@ namespace TFSEventsProcessor.Tests
         public void Can_get_the_workitem_id()
         {
             // Arrange
-            var alertMessage = ServiceHookTestData.WorkItemUpdatedServiceHook();
+            var alertMessage = ServiceHookTestData.GetEventJson("workitem.updated");
             var provider = new Providers.JsonDataProvider(alertMessage);
 
 
@@ -99,7 +99,7 @@ namespace TFSEventsProcessor.Tests
         public void Can_get_the_base_url()
         {
             // Arrange
-            var alertMessage = ServiceHookTestData.WorkItemUpdatedServiceHook();
+            var alertMessage = ServiceHookTestData.GetEventJson("workitem.updated");
             var provider = new Providers.JsonDataProvider(alertMessage);
 
             // act

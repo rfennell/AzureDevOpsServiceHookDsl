@@ -5,6 +5,7 @@ using TFSEventsProcessor.Tests.Helpers;
 namespace TFSEventsProcessor.Tests.Dsl
 {
     using Interfaces;
+    using System.Net;
     using TFSEventsProcessor.Providers;
 
     [TestFixture]
@@ -14,24 +15,26 @@ namespace TFSEventsProcessor.Tests.Dsl
         public void Can_run_a_script_using_work_item_updated_data()
         {
             // arrange
-            var alertMessage = ServiceHookTestData.WorkItemUpdatedServiceHook();
-            
+            var alertMessage = ServiceHookTestData.GetEventJson("workitem.updated");
+
+
             var emailProvider = new Moq.Mock<IEmailProvider>();
             var tfsProvider = new Moq.Mock<ITfsProvider>();
 
             var sut = new Controllers.WebHookController(
-                emailProvider.Object, 
+                emailProvider.Object,
                 tfsProvider.Object,
                 @"TestDataFiles\Scripts\tfs\alerts\fullscript.py", @".\dsl");
 
             // redirect the console
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
-            
+
             // act
-            sut.Post(alertMessage);
+            var actual = sut.Post(alertMessage);
 
             // assert
-            Assert.AreEqual("A JSON workitem.updated event 5" + Environment.NewLine, consoleOut.ToString());
+            Assert.AreEqual(HttpStatusCode.OK, actual.StatusCode);
+            Assert.AreEqual("Got a known workitem.updated event type with id 5" + Environment.NewLine, consoleOut.ToString());
 
         }
 
@@ -39,7 +42,7 @@ namespace TFSEventsProcessor.Tests.Dsl
         public void Can_run_a_script_using_checkin_data()
         {
             // arrange
-            var alertMessage = ServiceHookTestData.CheckInServiceHook();
+            var alertMessage = ServiceHookTestData.GetEventJson("tfvc.checkin");
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
             var tfsProvider = new Moq.Mock<ITfsProvider>();
@@ -53,10 +56,11 @@ namespace TFSEventsProcessor.Tests.Dsl
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
 
             // act
-            sut.Post(alertMessage);
+            var actual = sut.Post(alertMessage);
 
             // assert
-            Assert.AreEqual("A JSON tfvc.checkin event 18" + Environment.NewLine, consoleOut.ToString());
+            Assert.AreEqual(HttpStatusCode.OK, actual.StatusCode);
+            Assert.AreEqual("Got a known tfvc.checkin event type with id 18" + Environment.NewLine, consoleOut.ToString());
 
         }
 
@@ -64,7 +68,7 @@ namespace TFSEventsProcessor.Tests.Dsl
         public void Can_run_a_script_using_push_data()
         {
             // arrange
-            var alertMessage = ServiceHookTestData.PushServiceHook();
+            var alertMessage = ServiceHookTestData.GetEventJson("git.push");
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
             var tfsProvider = new Moq.Mock<ITfsProvider>();
@@ -78,17 +82,18 @@ namespace TFSEventsProcessor.Tests.Dsl
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
 
             // act
-            sut.Post(alertMessage);
+            var actual = sut.Post(alertMessage);
 
             // assert
-            Assert.AreEqual("A JSON git.push event on repo 3c4e22ee-6148-45a3-913b-454009dac91d with id 73" + Environment.NewLine, consoleOut.ToString());
+            Assert.AreEqual(HttpStatusCode.OK, actual.StatusCode);
+            Assert.AreEqual("Got a known git.push event type on repo 3c4e22ee-6148-45a3-913b-454009dac91d with id 73" + Environment.NewLine, consoleOut.ToString());
 
         }
         [Test]
         public void Can_run_a_script_using_work_item_created_data()
         {
             // arrange
-            var alertMessage = ServiceHookTestData.WorkItemCreatedServiceHook();
+            var alertMessage = ServiceHookTestData.GetEventJson("workitem.created");
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
             var tfsProvider = new Moq.Mock<ITfsProvider>();
@@ -102,39 +107,41 @@ namespace TFSEventsProcessor.Tests.Dsl
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
 
             // act
-            sut.Post(alertMessage);
+            var actual = sut.Post(alertMessage);
 
             // assert
-            Assert.AreEqual("A JSON workitem.created event 5" + Environment.NewLine, consoleOut.ToString());
+            Assert.AreEqual(HttpStatusCode.OK, actual.StatusCode);
+            Assert.AreEqual("Got a known workitem.created event type with id 5" + Environment.NewLine, consoleOut.ToString());
 
         }
 
         [Test]
-        public void Can_run_a_script_using_build_data()
+        public void Cannot_run_a_script_using_an_unknown_event_type()
         {
             // arrange
-            var alertMessage = ServiceHookTestData.BuildCompletesServiceHook();
+            var alertMessage = ServiceHookTestData.GetEventJson("dummy");
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
             var tfsProvider = new Moq.Mock<ITfsProvider>();
 
             var sut = new Controllers.WebHookController(
-                emailProvider.Object, 
+                emailProvider.Object,
                 tfsProvider.Object,
-                @"TestDataFiles\Scripts\tfs\alerts\fullscript.py", 
+                @"TestDataFiles\Scripts\tfs\alerts\fullscript.py",
                 @".\dsl");
 
             // redirect the console
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
 
             // act
-            sut.Post(alertMessage);
+            var actual = sut.Post(alertMessage);
 
             // assert
-            Assert.AreEqual("A JSON build.complete event 2" + Environment.NewLine, consoleOut.ToString());
+            Assert.AreEqual(HttpStatusCode.BadRequest, actual.StatusCode);
+            Assert.AreEqual("", consoleOut.ToString());
 
         }
 
-        
+
     }
 }

@@ -12,9 +12,9 @@ namespace TFSEventsProcessor.Tests
        [Test]
         public void Can_read_the_changed_files_from_alert_json_block()
         {
-           // Arrange
-           var alertMessage = ServiceHookTestData.CheckInServiceHook();
-           var dataProvider = new Providers.JsonDataProvider(alertMessage);
+            // Arrange
+            var alertMessage = ServiceHookTestData.GetEventJson("tfvc.checkin");
+            var dataProvider = new Providers.JsonDataProvider(alertMessage);
 
             // act
            var actual = dataProvider.GetCheckInDetails();

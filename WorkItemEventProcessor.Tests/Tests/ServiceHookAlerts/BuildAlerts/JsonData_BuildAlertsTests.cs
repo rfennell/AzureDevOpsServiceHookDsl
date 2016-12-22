@@ -13,7 +13,7 @@ namespace TFSEventsProcessor.Tests
         public void Can_read_the_build_fields_from_alert_json_block()
         {
             // Arrange
-            var alertMessage = ServiceHookTestData.BuildCompletesServiceHook();
+            var alertMessage = ServiceHookTestData.GetEventJson("build.complete");
             var dataProvider = new Providers.JsonDataProvider(alertMessage);
 
             // act

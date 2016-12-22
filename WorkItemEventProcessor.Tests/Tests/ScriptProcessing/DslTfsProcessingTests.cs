@@ -229,7 +229,7 @@ namespace TFSEventsProcessor.Tests.Dsl
 
             // assert
 
-            Assert.AreEqual("A JSON build.complete event 123" + Environment.NewLine, consoleOut.ToString());
+            Assert.AreEqual("Got a known build.complete event type with id 123" + Environment.NewLine, consoleOut.ToString());
 
         }
 
