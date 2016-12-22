@@ -8,11 +8,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Settings.StyleCop = Settings.StyleCop
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFSEventsProcessor", "WorkItemEventProcessor\TFSEventsProcessor.csproj", "{F1DD6DF3-402A-4DE7-B4AC-A85CDE7EE644}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFSEventsProcessor", "TFSEventsProcessor\TFSEventsProcessor.csproj", "{F1DD6DF3-402A-4DE7-B4AC-A85CDE7EE644}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFSEventsProcessor.Dsl", "TFSEventsProcessor.Dsl\TFSEventsProcessor.Dsl.csproj", "{5F027E3C-E7AF-4E89-901C-5EF3F0F464A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFSEventsProcessor.Tests", "WorkItemEventProcessor.Tests\TFSEventsProcessor.Tests.csproj", "{16C638AA-5129-4C1C-B0D5-D5E0EAB6B1BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFSEventsProcessor.Tests", "TFSEventsProcessor.Tests\TFSEventsProcessor.Tests.csproj", "{16C638AA-5129-4C1C-B0D5-D5E0EAB6B1BF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Dsl", "Sample.Dsl\Sample.Dsl.csproj", "{5E6306BA-FC3E-406D-9086-4C93EEFB710B}"
 EndProject

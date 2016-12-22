@@ -145,7 +145,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WorkItemEventProcessor\TFSEventsProcessor.csproj">
+    <ProjectReference Include="..\TFSEventsProcessor\TFSEventsProcessor.csproj">
       <Project>{f1dd6df3-402a-4de7-b4ac-a85cde7ee644}</Project>
       <Name>TFSEventsProcessor</Name>
     </ProjectReference>

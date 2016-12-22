@@ -374,7 +374,7 @@
       <Project>{5f027e3c-e7af-4e89-901c-5ef3f0f464a7}</Project>
       <Name>TFSEventsProcessor.Dsl</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WorkItemEventProcessor\TFSEventsProcessor.csproj">
+    <ProjectReference Include="..\TFSEventsProcessor\TFSEventsProcessor.csproj">
       <Project>{f1dd6df3-402a-4de7-b4ac-a85cde7ee644}</Project>
       <Name>TFSEventsProcessor</Name>
     </ProjectReference>
