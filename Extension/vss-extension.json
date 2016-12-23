@@ -1,0 +1,51 @@
+{
+    "manifestVersion": 1,
+    "id": "BM-VSTS-ServiceHooks-DSL",
+    "name": "VSTS Service Hooks DSL",
+    "version": "2.2.16357.1",
+    "publisher": "richardfennellBM",
+    "galleryFlags": [
+        "Public"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services.Integration"
+        }
+    ],    
+    "description": "A WebAPI based website and framework to allows the scripting of responses to VSTS/TFS Service Hook calls in Python. Can be hosted on IIS or Azure",
+    "categories": [
+        "Integrate"
+    ],
+    "tags": [
+        "service Hook",
+        "integrate",
+        "script",
+        "python"      
+    ],
+    "links": {
+        "learn": {
+            "uri": "https://github.com/rfennell/VSTSServiceHookDsl/wiki"
+        },
+        "support": {
+            "uri": "https://github.com/rfennell/VSTSServiceHookDsl/issues"  
+        },
+        "Getstarted": {
+            "uri": "https://github.com/rfennell/VSTSServiceHookDsl/wiki"  
+        }
+    },
+    "icons": {
+        "default": "images/logo.png"
+    },
+    "branding": {
+        "color": "#f97923",
+        "theme": "dark"
+    },
+    "content": {
+        "details": {
+            "path": "README.md"
+        },
+        "license": {
+            "path": "LICENSE.txt"
+        }
+    }
+}
