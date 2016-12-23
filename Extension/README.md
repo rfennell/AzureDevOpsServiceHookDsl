@@ -1,13 +1,13 @@
 
 # TFS & VSTS Alerts DSL 
 
-Since it's inception Microsoft Team Foundation Server (TFS) provides a SOAP based alerting model where given a certain condition, such as a check-in, work item edit or build completion, an email can be sent to an interest party or a call made to a SOAP based web service. Using this SOAP model it is possible to provide any bespoke operations you wish that are triggered by a change on the TFS server.
+Both TFS and VSTS allow you to integrate with other systems using [Service Hooks](https://www.visualstudio.com/en-us/docs/integrate/get-started/service-hooks/get-started). As well as using the out the box offering it is possible to implement your own integrations using a REST Web Hook endpoint.  
 
-Recent versions of TFS and the hosted Visual Studio Teams Services (VSTS) also offer a REST Web Hook based alerts. This is now the preferred method for handling alerts. 
+This extension framework is designed to ease the development of your own REST Web Hook web site to do this type of integration. It does this by providing a MVC WebAPI endpoint and a collection of helper methods, implemented as an extensible Domain Specific Language (DSL), for common processing steps and API operations such as calling back to the TFS/VSTS server that called the endpoint or accessing SMTP services.
 
-This framework is designed to ease the development of a REST webhook services by providing helper methods for common processing steps and API operations such as calling back to the TFS server or accessing SMTP services.
+The key feature of this system is that the actual actions performed when a trigger occurs are controlled by a Python based script(s) that that allows the actual operation performed when the endpoint is called to be edited without the need to  to rebuild and redeploy the bespoke service.
 
-The key feature of this project is that it provides a Python based DSL that allows the actual operation performed when the endpoint is called to be edited without the need to  to rebuild and redeploy the bespoke service. Operations are defined by script such as show below
+Operations are defined by script such as show below
 
 ```
 import sys
