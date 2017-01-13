@@ -165,6 +165,11 @@ namespace TFSEventsProcessor.Providers
             return GetGenericApi(uri);
         }
 
+        private JObject GetWorkItem(string uri, string extraArgs)
+        {
+            return GetGenericApi($"{uri}{extraArgs}");
+        }
+
         public JObject GetGenericApi(string uri)
         {
             return GetGenericApi(new Uri(uri));
@@ -191,7 +196,7 @@ namespace TFSEventsProcessor.Providers
             {
                 if (relation["rel"].ToString() == "System.LinkTypes.Hierarchy-Reverse")
                 {
-                    parentItem = GetWorkItem(relation["url"].ToString());
+                    parentItem = GetWorkItem(relation["url"].ToString(),"?$expand = relations");
                 }
             }
             return parentItem;
