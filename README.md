@@ -1,4 +1,4 @@
-![Build Status - VSTSServiceHookDsl](https://richardfennell.visualstudio.com/DefaultCollection/_apis/public/build/definitions/670b3a60-2021-47ab-a88b-d76ebd888a2f/13/badge)
+![Release Status - VSTSServiceHookDsl](https://richardfennell.vsrm.visualstudio.com/_apis/public/Release/badge/670b3a60-2021-47ab-a88b-d76ebd888a2f/12/21)
 
 This project replace the my [original Codeplex Repo](https://tfsalertsdsl.codeplex.com) (now moved to [GitHub](https://github.com/rfennell/tfsalertsdsl) as Codeplex is being depricated and is now read-only), which supported the older SOAP based alerts model. If you need to use this older SOAP model use this older project, *but be warned it is not under active support*. 
 
