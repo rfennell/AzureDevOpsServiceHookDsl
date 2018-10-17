@@ -1,7 +1,7 @@
 
-# TFS & VSTS Alerts DSL 
+# Azure DevOps Service & Server Alerts DSL 
 
-Both TFS and VSTS allow you to integrate with other systems using [Service Hooks](https://www.visualstudio.com/en-us/docs/integrate/get-started/service-hooks/get-started). As well as using the out the box offering it is possible to implement your own integrations using a REST Web Hook endpoint.  
+Both Azure DevOps Server (TFS) and Azure DevOps Service (VSTS) allow you to integrate with other systems using [Service Hooks](https://www.visualstudio.com/en-us/docs/integrate/get-started/service-hooks/get-started). As well as using the out the box offering it is possible to implement your own integrations using a REST Web Hook endpoint.  
 
 This extension framework is designed to ease the development of your own REST Web Hook web site to do this type of integration. It does this by providing a MVC WebAPI endpoint and a collection of helper methods, implemented as an extensible Domain Specific Language (DSL), for common processing steps and API operations such as calling back to the TFS/VSTS server that called the endpoint or accessing SMTP services.
 
