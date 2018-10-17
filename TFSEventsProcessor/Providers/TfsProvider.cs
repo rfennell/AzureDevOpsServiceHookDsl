@@ -196,7 +196,7 @@ namespace TFSEventsProcessor.Providers
             {
                 if (relation["rel"].ToString() == "System.LinkTypes.Hierarchy-Reverse")
                 {
-                    parentItem = GetWorkItem(relation["url"].ToString(),"?$expand = relations");
+                    parentItem = GetWorkItem(relation["url"].ToString(),"?$expand=relations");
                 }
             }
             return parentItem;
@@ -256,7 +256,8 @@ namespace TFSEventsProcessor.Providers
             foreach (JProperty field in wi["fields"])
 #pragma warning restore S3217 // "Explicit" conversions of "foreach" loops should not be used
             {
-                if (currentValues["fields"][field.Name].ToString() != field.Value.ToString())
+                if (currentValues["fields"][field.Name] == null ||
+                    currentValues["fields"][field.Name].ToString() != field.Value.ToString())
                 {
                     // it has been edited to add the token
                     var jsonField = JToken.FromObject(new
