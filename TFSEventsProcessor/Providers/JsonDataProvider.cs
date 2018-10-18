@@ -195,7 +195,15 @@ namespace TFSEventsProcessor.Providers
         /// <returns>The GUID of the subscriptionID as a string</returns>
         public string GetSubsriptionID()
         {
-            return eventJson["id"].ToString();
+            var id = "00000000-0000-0000-0000-000000000000";
+            try
+            {
+                id = eventJson["subscriptionId"].ToString();
+            }
+            catch {
+                // production always seems to have this but some old test data files don't henc the catch
+            }
+            return id;
         }
                      
         /// <summary>

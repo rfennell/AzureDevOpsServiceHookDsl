@@ -28,13 +28,13 @@ namespace TFSEventsProcessor.Tests.ServiceHookAlerts.GenericMethods
         public void Can_get_subscriptionID()
         {
             // arrange
-            var provider = new TFSEventsProcessor.Providers.JsonDataProvider(Helpers.ServiceHookTestData.GetEventJson("workitem.updated"));
+            var provider = new TFSEventsProcessor.Providers.JsonDataProvider(Helpers.ServiceHookTestData.GetEventJson("git.pullrequest.created"));
 
             // act
             var actual = provider.GetSubsriptionID();
 
             // assert
-            Assert.AreEqual("27646e0e-b520-4d2b-9411-bba7524947cd", actual);
+            Assert.AreEqual("00000000-0000-0000-0000-000000000000", actual);
         }
     }
 }
