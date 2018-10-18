@@ -188,9 +188,16 @@ namespace TFSEventsProcessor.Providers
             return new Uri(longUri);
         }
 
-
-
-
+        /// <summary>
+        /// The subscription ID from the alert
+        /// It is returned as string so can be passed in place of event type
+        /// </summary>
+        /// <returns>The GUID of the subscriptionID as a string</returns>
+        public string GetSubsriptionID()
+        {
+            return eventJson["id"].ToString();
+        }
+                     
         /// <summary>
         /// Converts the alerts XML to a object
         /// </summary>

@@ -240,6 +240,7 @@
     <Compile Include="Helpers\RestTestData.cs" />
     <Compile Include="Helpers\TemplateTestData.cs" />
     <Compile Include="Tests\ScriptProcessing\ScriptSelectionTests.cs" />
+    <Compile Include="Tests\ServiceHookAlerts\GenericMethods\AlertGenericDataTests.cs" />
     <Compile Include="Tests\ServiceHookAlerts\WorkItemAlerts\JsonData_WorkitemChangedTests.cs" />
     <Compile Include="Tests\ServiceHookAlerts\WorkItemAlerts\GenericData_WorkItemChangedTests.cs" />
     <Compile Include="Tests\EmailService\MockedEmailTemplateAlertFieldTests.cs" />

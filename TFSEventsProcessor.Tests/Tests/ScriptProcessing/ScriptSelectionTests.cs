@@ -11,13 +11,19 @@ namespace TFSEventsProcessor.Tests.ScriptLoader
         public void Can_set_a_default_script()
         {
             // arrange
-            var script = "default.py";
+            var eventName = "DslScriptService.EventTypes.BuildEvent";
+            var subscriptionId = "27646e0e-b520-4d2b-9411-bba7524947cd";
+            var scriptName = "default.py";
+            var useSubScriptionId = false;
 
             // act
-            var actual = FolderHelper.GetScriptName("not used", script);
-
+            var actual = FolderHelper.GetScriptName(
+                eventName,
+                subscriptionId,
+                scriptName,
+                useSubScriptionId);
             // assert
-            Assert.AreEqual(script, actual);
+            Assert.AreEqual(scriptName, actual);
         }
         
         [TestMethod]
@@ -25,12 +31,39 @@ namespace TFSEventsProcessor.Tests.ScriptLoader
         {
             // arrange
             var eventName = "DslScriptService.EventTypes.BuildEvent";
+            var subscriptionId = "27646e0e-b520-4d2b-9411-bba7524947cd";
+            var scriptName = "";
+            var useSubScriptionId = false;
 
             // act
-            var actual = FolderHelper.GetScriptName(eventName.ToString(), "");
+            var actual = FolderHelper.GetScriptName(
+                eventName,
+                subscriptionId,
+                scriptName,
+                useSubScriptionId);
 
             // assert
             Assert.AreEqual(eventName + ".py", actual);
+        }
+
+        [TestMethod]
+        public void Uses_subscriptionID_if_no_default_script()
+        {
+            // arrange
+            var eventName = "DslScriptService.EventTypes.BuildEvent";
+            var subscriptionId = "27646e0e-b520-4d2b-9411-bba7524947cd";
+            var scriptName = "";
+            var useSubScriptionId = true;
+
+            // act
+            var actual = FolderHelper.GetScriptName(
+                eventName,
+                subscriptionId,
+                scriptName,
+                useSubScriptionId);
+
+            // assert
+            Assert.AreEqual(subscriptionId + ".py", actual);
         }
     }
 }

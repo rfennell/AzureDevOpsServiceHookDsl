@@ -28,8 +28,10 @@ namespace TFSEventsProcessor.Tests.Live
         {
             // arrange
             var memLogger = Helpers.Logging.CreateMemoryTargetLogger(LogLevel.Debug);
-            var uri = new Uri("https://dev.azure.com/yourinstance");
+            var uri = new Uri("https://dev.azure.com/instance");
             var pat = "<YOUR PAT>";
+            var wi = 98578;
+            var eventType = "workitem.updated";
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
             var tfsProvider = new TfsProvider(uri, pat);
@@ -38,7 +40,7 @@ namespace TFSEventsProcessor.Tests.Live
             var engine = new TFSEventsProcessor.Dsl.DslProcessor();
             var args = new Dictionary<string, object>
             {
-                { "Arguments", new[] { "workitem.updated", "2376" } },
+                { "Arguments", new[] { eventType, wi.ToString() } },
             };
 
             // act

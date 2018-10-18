@@ -57,6 +57,11 @@ namespace TFSEventsProcessor.Controllers
         private readonly bool redirectScriptEngineOutputtoLogging = false;
 
         /// <summary>
+        /// If true subscription id used in place over event type to find script name
+        /// </summary>
+        private readonly bool useSubscriptionID = false;
+
+        /// <summary>
         /// Default constructor
         /// </summary>
         public WebHookController()
@@ -69,6 +74,8 @@ namespace TFSEventsProcessor.Controllers
              Microsoft.Azure.CloudConfigurationManager.GetSetting("SMTPUsername"),
              Microsoft.Azure.CloudConfigurationManager.GetSetting("SMTPPassword"));
 
+            // default false
+            this.useSubscriptionID = ConfigHelper.ParseOrDefault(Microsoft.Azure.CloudConfigurationManager.GetSetting("UseSubscriptionId"));
             this.scriptFile = Microsoft.Azure.CloudConfigurationManager.GetSetting("ScriptFile");
             this.dslFolder = FolderHelper.GetRootedPath(Microsoft.Azure.CloudConfigurationManager.GetSetting("DSLFolder"));
             this.scriptFolder = FolderHelper.GetRootedPath(Microsoft.Azure.CloudConfigurationManager.GetSetting("ScriptFolder"));
@@ -140,6 +147,8 @@ namespace TFSEventsProcessor.Controllers
 
                 // work out the event type
                 var eventType = dataProvider.GetEventType();
+                // work out the subscription ID
+                var subscriptionID = dataProvider.GetSubsriptionID();
                 string[] argItems = null;
                 switch (eventType)
                 {
@@ -235,7 +244,11 @@ namespace TFSEventsProcessor.Controllers
                 engine.RunScript(
                     this.dslFolder,
                     this.scriptFolder,
-                    FolderHelper.GetScriptName(argItems[0], this.scriptFile),
+                    FolderHelper.GetScriptName(
+                        eventType,
+                        subscriptionID,
+                        this.scriptFile, 
+                        this.useSubscriptionID),
                     args,
                     this.iTfsProvider,
                     this.iEmailProvider,

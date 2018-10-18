@@ -60,14 +60,24 @@ namespace TFSEventsProcessor.Helpers
         /// Returns the name of the script to run
         /// </summary>
         /// <param name="type">The event type</param>
+        /// <param name="id">The subscriptionID</param>
         /// <param name="defaultScript">Default script name</param>
+        /// <param name="useID">Use the subsriptionID if not default script</param>
         /// <returns>Script name</returns>
-        public static string GetScriptName(string type, string defaultScript)
+        public static string GetScriptName(string type, string id, string defaultScript, bool useID)
         {
             var retItem = defaultScript;
             if (string.IsNullOrEmpty(defaultScript))
             {
-                retItem = string.Format("{0}.py", type.ToString());
+                if (useID == true)
+                {
+                    retItem = $"{id}.py";
+                }
+                else
+                {
+                    retItem = $"{type}.py";
+
+                }
             }
             logger.Info(
                         string.Format(

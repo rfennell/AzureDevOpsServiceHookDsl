@@ -57,8 +57,8 @@
     </parameter>
   
     
-    <parameter name="PAT" description="Description for PAT" defaultvalue="__PAT__" tags="">
-    <parameterentry kind="XmlFile" scope="\\web.config$" match="/configuration/appSettings/add[@key='PAT']/@value" />
+    <parameter name="UseSubscriptionId" description="Description for PAT" defaultvalue="__USESUBSCRIPTIONID__" tags="">
+    <parameterentry kind="XmlFile" scope="\\web.config$" match="/configuration/appSettings/add[@key='UseSubscriptionId']/@value" />
     </parameter>
   
     
