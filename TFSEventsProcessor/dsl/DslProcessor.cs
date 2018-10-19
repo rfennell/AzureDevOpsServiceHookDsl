@@ -149,7 +149,7 @@ namespace TFSEventsProcessor.Dsl
                     if (File.Exists(scriptname) == false)
                     {
                         this.logger.Error(string.Format("DslProcessor: DslProcessor cannot find script:{0}", scriptname));
-                        throw new FileNotFoundException(string.Format("The script file '{0}' could not be found", scriptname));
+                        return;
                     }
                 }
             }
