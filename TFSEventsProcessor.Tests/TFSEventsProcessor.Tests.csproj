@@ -226,6 +226,7 @@
     </None>
     <Compile Include="Tests\EmailService\EmailTemplateGetInterestedParties.cs" />
     <Compile Include="Tests\LiveTests\TestAScriptAgainstLiveTests.cs" />
+    <Compile Include="Tests\ScriptProcessing\InstanceSelectionTests.cs" />
     <Compile Include="Tests\ServiceHookAlerts\BuildAlerts\JsonData_BuildAlertsTests.cs" />
     <Compile Include="Tests\ServiceHookAlerts\CheckInAlerts\JsonData_CheckinAlertsTests.cs" />
     <Compile Include="Tests\ScriptProcessing\DslLoggingProcessingTests.cs" />

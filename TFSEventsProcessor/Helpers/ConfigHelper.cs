@@ -54,6 +54,7 @@ namespace TFSEventsProcessor.Helpers
         /// <returns>The PAT if any</returns>
         internal static string GetPersonalAccessToken(Uri uri)
         {
+            // first check for a global PAT
             var pat = Microsoft.Azure.CloudConfigurationManager.GetSetting("PAT");
             if (string.IsNullOrEmpty(pat))
             {
@@ -61,15 +62,64 @@ namespace TFSEventsProcessor.Helpers
                 var instanceCollection = ConfigurationManager.GetSection("VSTSInstance") as NameValueCollection;
                 if (instanceCollection != null)
                 {
-                    try
+                    // format xxx.visualstudio.com or dev.azure.com/xxx
+                    // as of oct18 you always get the prior format, but this could change
+                    // could be either
+                    // https://richardfennell.visualstudio.com/_apis/git/repositories/3c4e22ee-6148-45a3-913b-454009dac91d/commits/50e062ba3f13715a83ca4bb43dc54ef19630ae31
+                    // https://azure.dev.com/richardfennell/_apis/git/repositories/3c4e22ee-6148-45a3-913b-454009dac91d/commits/50e062ba3f13715a83ca4bb43dc54ef19630ae31
+
+                    // Look for just instance name e.g richardfennell
+                    pat = GetPATFromCollection(ConfigHelper.GetInstanceName(uri), instanceCollection);
+                    if (string.IsNullOrEmpty(pat))
                     {
-                        pat = instanceCollection[uri.Host].ToString();
-                    }
-                    catch (NullReferenceException)
-                    { }
+                        // fall back to the complete instance name e.g.richardfennell.visualstudio.com
+                        pat = GetPATFromCollection(uri.Host, instanceCollection);
+                    } 
                 }
             }
             return pat;
+        }
+
+        /// <summary>
+        /// Looks for a instance name in a collection
+        /// Used to catch the expections seen if no entry
+        /// </summary>
+        /// <param name="host">Host to look for</param>
+        /// <param name="collection">Data collection</param>
+        /// <returns></returns>
+        private static string GetPATFromCollection(string host, NameValueCollection collection)
+        {
+            var pat = string.Empty;
+
+            try
+            {
+                // could do with adding some code that checks in the config file
+                pat = collection[host].ToString();
+            }
+            catch (NullReferenceException)
+            { }
+
+            return pat;
+        }
+
+        /// <summary>
+        /// Get the Azure DevOps instance name
+        /// </summary>
+        /// <param name="uri">The event provided URL</param>
+        /// <returns>The instance name</returns>
+        public static string GetInstanceName(Uri uri)
+        {
+            // fallback to the full name
+            var instance = uri.Host;
+            if (uri.Host.Contains("visualstudio.com"))
+            {
+                instance = instance.Split('.')[0];
+            }
+            else if (uri.ToString().Contains("https://dev.azure.com"))
+            {
+                instance = uri.ToString().Replace("https://dev.azure.com",string.Empty).Split('/')[1];
+            }
+            return instance;
         }
     }
 }
