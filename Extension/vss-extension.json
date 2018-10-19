@@ -47,5 +47,9 @@
         "license": {
             "path": "LICENSE.txt"
         }
-    }
+    },
+	 "CustomerQnASupport": {
+        "enableqna":"true",
+        "url": "https://github.com/rfennell/VSTSServiceHookDsl/issues"
+    } 
 }
