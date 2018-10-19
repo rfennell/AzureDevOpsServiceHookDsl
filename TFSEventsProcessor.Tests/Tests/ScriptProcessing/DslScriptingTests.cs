@@ -25,16 +25,6 @@ namespace TFSEventsProcessor.Tests.Dsl
         }
 
         [Test]
-        public void A_missing_dsl_script_throws_exception()
-        {
-            // arrange
-            var engine = new TFSEventsProcessor.Dsl.DslProcessor();
-
-            // act // assert
-            Assert.Throws<FileNotFoundException>(() => engine.RunScript(@"testDataFiles\scripts\scripting\dummy.py", null, null, null));
-        }
-
-        [Test]
         public void A_missing_TFS_provider_throws_exception()
         {
             // arrange

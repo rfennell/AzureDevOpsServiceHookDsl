@@ -112,7 +112,7 @@ namespace TFSEventsProcessor.Providers
             }
             else
             {
-                logger.Info("WebClient Using User/Password or PAT");
+                logger.Info("WebClient PAT");
                 var pair = $"{this.username}:{this.password}";
                 var bytes = System.Text.Encoding.ASCII.GetBytes(pair);
                 var base64 = System.Convert.ToBase64String(bytes);
@@ -232,7 +232,7 @@ namespace TFSEventsProcessor.Providers
         /// <param name="wi">The work item</param>
         public JObject UpdateWorkItem(JObject wi)
         {
-            logger.Info("Updating WI via {1}", this.tpcUri);
+            logger.Info($"Updating WI via {this.tpcUri}");
 
             // get the current work item values so we can see what has changed
             var currentValues = GetWorkItem(Convert.ToInt32(wi["id"]));

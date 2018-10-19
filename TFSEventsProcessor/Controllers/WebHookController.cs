@@ -132,12 +132,12 @@ namespace TFSEventsProcessor.Controllers
                 var dataProvider = new Providers.JsonDataProvider(jsondata);
 
                 var uri = dataProvider.GetServerUrl();
-                var pat = ConfigHelper.GetPersonalAccessToken(uri);
-                logger.Info(string.Format("Post: Using a {0}", uri));
-                if (string.IsNullOrEmpty(pat) == false)
+                var locationpat = ConfigHelper.GetPersonalAccessToken(uri);
+                logger.Info($"Post: Using a {uri}");
+                if (string.IsNullOrEmpty(locationpat.Item2) == false)
                 {
-                    logger.Info(string.Format("Post: Using a PAT token and url {0}", uri));
-                    this.iTfsProvider = new Providers.TfsProvider(uri, pat);
+                    logger.Info($"Post: Using a PAT token and obtained from {locationpat.Item1}");
+                    this.iTfsProvider = new Providers.TfsProvider(uri, locationpat.Item2);
                 }
                 else
                 {

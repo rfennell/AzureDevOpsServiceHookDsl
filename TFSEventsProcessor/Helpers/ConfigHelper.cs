@@ -52,9 +52,10 @@ namespace TFSEventsProcessor.Helpers
         /// </summary>
         /// <param name="uri">The source URI</param>
         /// <returns>The PAT if any</returns>
-        internal static string GetPersonalAccessToken(Uri uri)
+        internal static Tuple<string, string> GetPersonalAccessToken(Uri uri)
         {
             // first check for a global PAT
+            var location = "AppSettings";
             var pat = Microsoft.Azure.CloudConfigurationManager.GetSetting("PAT");
             if (string.IsNullOrEmpty(pat))
             {
@@ -69,15 +70,17 @@ namespace TFSEventsProcessor.Helpers
                     // https://azure.dev.com/richardfennell/_apis/git/repositories/3c4e22ee-6148-45a3-913b-454009dac91d/commits/50e062ba3f13715a83ca4bb43dc54ef19630ae31
 
                     // Look for just instance name e.g richardfennell
-                    pat = GetPATFromCollection(ConfigHelper.GetInstanceName(uri), instanceCollection);
+                    location = ConfigHelper.GetInstanceName(uri);
+                    pat = GetPATFromCollection(location, instanceCollection);
                     if (string.IsNullOrEmpty(pat))
                     {
                         // fall back to the complete instance name e.g.richardfennell.visualstudio.com
-                        pat = GetPATFromCollection(uri.Host, instanceCollection);
-                    } 
+                        location = uri.Host;
+                        pat = GetPATFromCollection(location, instanceCollection);
+                    }
                 }
             }
-            return pat;
+            return Tuple.Create(location, pat);
         }
 
         /// <summary>
@@ -117,7 +120,7 @@ namespace TFSEventsProcessor.Helpers
             }
             else if (uri.ToString().Contains("https://dev.azure.com"))
             {
-                instance = uri.ToString().Replace("https://dev.azure.com",string.Empty).Split('/')[1];
+                instance = uri.ToString().Replace("https://dev.azure.com", string.Empty).Split('/')[1];
             }
             return instance;
         }
