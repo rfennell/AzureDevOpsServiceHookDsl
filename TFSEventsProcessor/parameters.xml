@@ -58,7 +58,7 @@
 
 
   <parameter name="UseSubscriptionId" description="Description for UseSubscriptionId" defaultvalue="__USESUBSCRIPTIONID__" tags="">
-    <parameterentry kind="XmlFile" scope="\\web.config$" match="/configuration/appSettings/add[@key='PAT']/@value" />
+    <parameterentry kind="XmlFile" scope="\\web.config$" match="/configuration/appSettings/add[@key='UseSubscriptionId']/@value" />
   </parameter>
 
   <parameter name="PasswordForUser" description="Description for PasswordForUser" defaultvalue="__PASSWORD__" tags="">
