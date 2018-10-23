@@ -61,16 +61,33 @@
     <parameterentry kind="XmlFile" scope="\\web.config$" match="/configuration/appSettings/add[@key='UseSubscriptionId']/@value" />
   </parameter>
 
-  <parameter name="PasswordForUser" description="Description for PasswordForUser" defaultvalue="__PASSWORD__" tags="">
-    <parameterentry kind="XmlFile" scope="\\web.config$" match="/configuration/Users/add[@key='user1']/@value" />
-  </parameter>
+  <parameter name="UserNameForUser" defaultValue="__USERNAME__"></parameter>
+  <parameter name="PasswordForUser" defaultValue="__PASSWORD__"></parameter>
 
-  <parameter name="InstanceName" description="Description for InstanceName" defaultvalue="__INSTANCENAME__" tags="">
-    <parameterentry kind="XmlFile" scope="\\web.config$" match="/configuration/VSTSInstance/add/@key" />
+  <parameter
+  defaultValue="&lt;add key='{UserNameForUser}' value='{PasswordForUser}' /&gt;"
+  description="Generate user line"
+  name="UserDetails"
+  tags="Hidden">
+    <parameterentry
+      kind="XmlFile"
+      match="/configuration/Users"
+      scope="\\web.config$" />
   </parameter>
+  
 
-  <parameter name="InstancePAT" description="Description for PAT" defaultvalue="__INSTANCEPAT__" tags="">
-    <parameterentry kind="XmlFile" scope="\\web.config$" match="/configuration/VSTSInstance/add[@key='__INSTANCENAME__']/@value" />
+  <parameter name="InstanceName" defaultValue="__INSTANCENAME__"></parameter>
+  <parameter name="InstancePAT" defaultValue="__INSTANCEPAT__"></parameter>
+
+  <parameter
+  defaultValue="&lt;add key='{InstanceName}' value='{InstancePAT}' /&gt;"
+  description="Generate instance line"
+  name="AzureDevOpsInstance"
+  tags="Hidden">
+    <parameterentry
+      kind="XmlFile"
+      match="/configuration/VSTSInstance"
+      scope="\\web.config$" />
   </parameter>
-
+  
 </parameters>
