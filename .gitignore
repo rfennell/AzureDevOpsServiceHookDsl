@@ -197,3 +197,4 @@ FakesAssemblies/
 /source/PowerShellWrapper/logs
 /source/StyleCopWrapper.Tests/logs
 /WorkItemEventProcessor/_publish/TFSEventsProcessor_FileSystem
+/TFSEventsProcessor/_publish/TfsEventsProcessor_MsDeploy

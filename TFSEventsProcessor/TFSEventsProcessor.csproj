@@ -253,6 +253,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="scriptfolder\basicscript.py" />
+    <Content Include="TFSEventsProcessor.wpp.targets" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlertDetails\ReleaseAlertDetails.cs" />
