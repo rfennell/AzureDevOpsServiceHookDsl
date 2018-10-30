@@ -10,7 +10,7 @@ Since it's inception Microsoft Team Foundation Server (TFS) provides a SOAP base
 
 Recent versions of Azure DevOps Service (TFS) and the hosted Azure DevOps Services (VSTS) also offer a REST Web Hook based alerts. This is now the preferred method for handling alerts. 
 
-This framework is designed to ease the development of a REST webhook services by providing helper methods for common processing steps and API operations such as calling back to the TFS server or accessing SMTP services.
+This framework is designed to easie the development of a REST webhook services by providing helper methods for common processing steps and API operations such as calling back to the TFS server or accessing SMTP services.
 
 The key feature of this project is that it provides a Python based DSL that allows the actual operation performed when the endpoint is called to be edited without the need to  to rebuild and redeploy the bespoke service. Operations are defined by script such as show below
 
