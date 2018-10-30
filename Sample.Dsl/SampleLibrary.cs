@@ -3,9 +3,9 @@ namespace Sample.Dsl
 {
     using System;
     using System.ComponentModel.Composition;
-    using TFSEventsProcessor.Dsl;
-    using TFSEventsProcessor.Interfaces;
-    using TFSEventsProcessor.Providers;
+    using AzureDevOpsEventsProcessor.Dsl;
+    using AzureDevOpsEventsProcessor.Interfaces;
+    using AzureDevOpsEventsProcessor.Providers;
 
     /// <summary>
     /// Sample DSL Library
@@ -19,7 +19,7 @@ namespace Sample.Dsl
         /// <summary>
         /// The link to TFS
         /// </summary>
-        public ITfsProvider TfsProvider { get; set; }
+        public IAzureDevOpsProvider TfsProvider { get; set; }
         /// <summary>
         /// The link to email
         /// </summary>

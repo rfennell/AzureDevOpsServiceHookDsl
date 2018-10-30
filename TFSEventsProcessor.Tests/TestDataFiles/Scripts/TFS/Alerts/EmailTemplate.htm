@@ -1,9 +1,0 @@
-﻿<!-- Use the @@tag@@ for current work item field and the ##tag## for new values from the alert message --> 
-<subject>The Work Item [@@System.Id@@] has been edited by [##System.ChangedBy##] </subject>
-<body>
-The title is '@@System.Title@@' for the work item [@@System.Id@@] &lt;br /&gt;
-The current value of my custom WI field is '@@Bm.CustomField1@@' and this field should give an error '@@Incorrect.Field@@' &lt;br /&gt;
-You can also access the changes from the alert, these only work if the named field has changed for a given alert. So this might ##Microsoft.VSTS.Scheduling.StoryPoints## work but ##Made.Up## will not
-</body>
-<wifieldheader>&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;&lt;u&gt;All fields present in the work item&lt;/strong&gt;&lt;/u&gt;&lt;br /&gt;</wifieldheader>
-<alertfieldheader>&lt;br /&gt;&lt;br /&gt;&lt;strong&gt;&lt;u&gt;All changed fields in the alert&lt;/strong&gt;&lt;/u&gt;&lt;br /&gt;</alertfieldheader>

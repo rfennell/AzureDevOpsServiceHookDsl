@@ -1,0 +1,1 @@
+﻿SendEmail("fred@test.com","The subject","The body of the email")

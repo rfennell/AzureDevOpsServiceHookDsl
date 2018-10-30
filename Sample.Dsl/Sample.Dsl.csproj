@@ -89,9 +89,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TFSEventsProcessor\TFSEventsProcessor.csproj">
+    <ProjectReference Include="..\AzureDevOpsEventsProcessor\AzureDevOpsEventsProcessor.csproj">
       <Project>{f1dd6df3-402a-4de7-b4ac-a85cde7ee644}</Project>
-      <Name>TFSEventsProcessor</Name>
+      <Name>AzureDevOpsEventsProcessor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,0 +1,102 @@
+﻿{
+  "subscriptionId": "00000000-0000-0000-0000-000000000000",
+  "notificationId": 38,
+  "id": "0a79a882-cedb-48a8-9ae9-a718b6768746",
+  "eventType": "ms.vss-release.deployment-completed-event",
+  "publisherId": "rm",
+  "scope": "all",
+  "message": {
+    "text": "Deployment of release Release-1 on environment Dev Succeeded.",
+    "html": "Deployment on environment <a href='http://fabfiber.visualstudio.com/Fabrikam-Fiber-Git/_apps/hub/ms.vss-releaseManagement-web.hub-explorer?_a=environment-summary&definitionEnvironmentId=1&definitionId=1'>Dev</a> Succeeded.",
+    "markdown": "Deployment on environment [Dev](http://fabfiber.visualstudio.com/Fabrikam-Fiber-Git/_apps/hub/ms.vss-releaseManagement-web.hub-explorer?_a=environment-summary&definitionEnvironmentId=1&definitionId=1) Succeeded."
+  },
+  "detailedMessage": {
+    "text": "Deployment of release Release-1 on environment Dev Succeeded. Time to deploy: 0.11 minutes.",
+    "html": "Deployment on environment <a href='http://fabfiber.visualstudio.com/Fabrikam-Fiber-Git/_apps/hub/ms.vss-releaseManagement-web.hub-explorer?_a=environment-summary&definitionEnvironmentId=1&definitionId=1'>Dev</a> Succeeded. Time to deploy: 0.11 minutes.",
+    "markdown": "Deployment on environment [Dev](http://fabfiber.visualstudio.com/Fabrikam-Fiber-Git/_apps/hub/ms.vss-releaseManagement-web.hub-explorer?_a=environment-summary&definitionEnvironmentId=1&definitionId=1) Succeeded. Time to deploy: 0.11 minutes."
+  },
+  "resource": {
+    "environment": {
+      "id": 5,
+      "releaseId": 0,
+      "name": "Dev",
+      "status": "succeeded",
+      "variables": {},
+      "preDeployApprovals": [],
+      "postDeployApprovals": [],
+      "preApprovalsSnapshot": {
+        "approvals": [],
+        "approvalOptions": {
+          "requiredApproverCount": 0,
+          "releaseCreatorCanBeApprover": true
+        }
+      },
+      "postApprovalsSnapshot": {
+        "approvals": []
+      },
+      "deploySteps": [],
+      "rank": 1,
+      "definitionEnvironmentId": 1,
+      "queueId": 1,
+      "environmentOptions": {
+        "emailNotificationType": "OnlyOnFailure",
+        "emailRecipients": "release.environment.owner;release.creator",
+        "skipArtifactsDownload": false,
+        "timeoutInMinutes": 0,
+        "enableAccessToken": false
+      },
+      "demands": [],
+      "conditions": [],
+      "modifiedOn": "2016-01-21T08:19:17.26Z",
+      "workflowTasks": [
+        {
+          "taskId": "00000000-0000-0000-0000-000000000000",
+          "version": "*",
+          "name": "Deploy Website to Azure",
+          "enabled": true,
+          "alwaysRun": false,
+          "continueOnError": false,
+          "timeoutInMinutes": 0,
+          "definitionType": null,
+          "inputs": {
+            "ConnectedServiceName": "b460b0f8-fe23-4dc2-a99c-fd8b0633fe1c",
+            "WebSiteName": "$(webAppName)",
+            "WebSiteLocation": "Southeast Asia",
+            "Slot": "",
+            "Package": "$(System.DefaultWorkingDirectory)\\**\\*.zip"
+          }
+        }
+      ],
+      "deployPhasesSnapshot": [],
+      "owner": {
+        "id": "4247c988-4060-4712-abca-ff44681dd78a",
+        "displayName": "Chuck Reinhart"
+      },
+      "scheduledDeploymentTime": "2016-01-21T08:19:17.26Z",
+      "schedules": [],
+      "release": {
+        "id": 1,
+        "name": "Release-1",
+        "_links": {}
+      }
+    },
+    "project": {
+      "id": "00000000-0000-0000-0000-000000000000",
+      "name": "Fabrikam"
+    }
+  },
+  "resourceVersion": "3.0-preview.1",
+  "resourceContainers": {
+    "collection": {
+      "id": "c12d0eb8-e382-443b-9f9c-c52cba5014c2"
+    },
+    "account": {
+      "id": "f844ec47-a9db-4511-8281-8b63f4eaf94e"
+    },
+    "project": {
+      "id": "be9b3917-87e6-42a4-a549-2bc06a7a878f"
+    }
+  },
+  "createdDate": "2016-12-22T15:09:45.7131615Z"
+}
+

@@ -1,1 +1,0 @@
-﻿Detailed event logs will be dumped on here by default
