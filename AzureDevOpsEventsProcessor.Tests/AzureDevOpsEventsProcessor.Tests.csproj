@@ -249,22 +249,22 @@
     <Compile Include="Tests\EmailService\MockedEmailTemplateWorkItemFieldTests.cs" />
     <Compile Include="Tests\EmailService\EmailTemplateLoadTests.cs" />
     <Compile Include="Helpers\TestProviderFactory.cs" />
-    <Content Include="TestDataFiles\Scripts\TFS\Alerts\markparentasblocked.py">
+    <Content Include="TestDataFiles\Scripts\AzureDevOps\Alerts\markparentasblocked.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestDataFiles\Scripts\TFS\API\loadpush.py">
+    <Content Include="TestDataFiles\Scripts\AzureDevOps\API\loadpush.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestDataFiles\Scripts\TFS\Alerts\getcommitsinpush.py">
+    <Content Include="TestDataFiles\Scripts\AzureDevOps\Alerts\getcommitsinpush.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestDataFiles\Scripts\TFS\Alerts\getchangeset.py">
+    <Content Include="TestDataFiles\Scripts\AzureDevOps\Alerts\getchangeset.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestDataFiles\Scripts\TFS\API\tagbuild.py">
+    <Content Include="TestDataFiles\Scripts\AzureDevOps\API\tagbuild.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestDataFiles\Scripts\TFS\Alerts\setbuildtagresult.py">
+    <Content Include="TestDataFiles\Scripts\AzureDevOps\Alerts\setbuildtagresult.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -272,28 +272,28 @@
     <Content Include="Dsl\Readme.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestDataFiles\Scripts\TFS\API\loadchildwi.py">
+    <Content Include="TestDataFiles\Scripts\AzureDevOps\API\loadchildwi.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestDataFiles\Scripts\TFS\API\loadparentwi.py">
+    <Content Include="TestDataFiles\Scripts\AzureDevOps\API\loadparentwi.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestDataFiles\Scripts\TFS\Alerts\PBI.htm">
+    <Content Include="TestDataFiles\Scripts\AzureDevOps\Alerts\PBI.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestDataFiles\Scripts\TFS\Alerts\EmailTemplate.htm">
+    <Content Include="TestDataFiles\Scripts\AzureDevOps\Alerts\EmailTemplate.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestDataFiles\Scripts\TFS\Alerts\changeparentworkitemstate.py">
+    <Content Include="TestDataFiles\Scripts\AzureDevOps\Alerts\changeparentworkitemstate.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestDataFiles\Scripts\TFS\Alerts\setbuildretensionbyresult.py">
+    <Content Include="TestDataFiles\Scripts\AzureDevOps\Alerts\setbuildretensionbyresult.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestDataFiles\Scripts\TFS\API\loadwi.py">
+    <Content Include="TestDataFiles\Scripts\AzureDevOps\API\loadwi.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestDataFiles\Scripts\TFS\API\createwi.py">
+    <Content Include="TestDataFiles\Scripts\AzureDevOps\API\createwi.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestDataFiles\Scripts\scripting\badscript1.py">
@@ -311,28 +311,28 @@
     <Content Include="TestDataFiles\Scripts\scripting\args.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestDataFiles\Scripts\TFS\Alerts\fullscript.py">
+    <Content Include="TestDataFiles\Scripts\AzureDevOps\Alerts\fullscript.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestDataFiles\Scripts\TFS\API\loadbuild.py">
+    <Content Include="TestDataFiles\Scripts\AzureDevOps\API\loadbuild.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestDataFiles\Scripts\TFS\API\loadchangeset.py">
+    <Content Include="TestDataFiles\Scripts\AzureDevOps\API\loadchangeset.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestDataFiles\Scripts\TFS\API\keepbuild.py">
+    <Content Include="TestDataFiles\Scripts\AzureDevOps\API\keepbuild.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestDataFiles\Scripts\TFS\Alerts\sendtemplatedemail.py">
+    <Content Include="TestDataFiles\Scripts\AzureDevOps\Alerts\sendtemplatedemail.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestDataFiles\Scripts\scripting\twolibraries.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestDataFiles\Scripts\TFS\Alerts\incrementbuildargument.py">
+    <Content Include="TestDataFiles\Scripts\AzureDevOps\Alerts\incrementbuildargument.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestDataFiles\Scripts\TFS\API\updatewi.py">
+    <Content Include="TestDataFiles\Scripts\AzureDevOps\API\updatewi.py">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="app.config">

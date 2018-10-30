@@ -83,10 +83,10 @@ namespace AzureDevOpsEventsProcessor.Tests
            // arrange
 
            // act
-           var actual = EmailTemplate.FindTemplate(@"TestDataFiles\Scripts\tfs\alerts\EmailTemplate.htm", string.Empty);
+           var actual = EmailTemplate.FindTemplate(@"TestDataFiles\Scripts\AzureDevOps\alerts\EmailTemplate.htm", string.Empty);
 
            // assert
-           Assert.IsTrue(actual.EndsWith(@"TestDataFiles\Scripts\tfs\alerts\EmailTemplate.htm"));
+           Assert.IsTrue(actual.EndsWith(@"TestDataFiles\Scripts\AzureDevOps\alerts\EmailTemplate.htm"));
        }
 
        [Test]
@@ -95,10 +95,10 @@ namespace AzureDevOpsEventsProcessor.Tests
            // arrange
 
            // act
-           var actual = EmailTemplate.FindTemplate(@"TestDataFiles\Scripts\tfs\alerts", "PBI");
+           var actual = EmailTemplate.FindTemplate(@"TestDataFiles\Scripts\AzureDevOps\alerts", "PBI");
 
             // assert
-            Assert.IsTrue(actual.EndsWith(@"TestDataFiles\Scripts\tfs\alerts\PBI.htm"));
+            Assert.IsTrue(actual.EndsWith(@"TestDataFiles\Scripts\AzureDevOps\alerts\PBI.htm"));
        }
 
  

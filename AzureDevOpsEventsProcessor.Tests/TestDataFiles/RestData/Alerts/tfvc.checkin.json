@@ -1,7 +1,7 @@
 ﻿{
   "id": "f9b4c23e-88dd-4516-b04d-849787304e32",
   "eventType": "tfvc.checkin",
-  "publisherId": "tfs",
+  "publisherId": "Azure DevOps",
   "scope": "all",
   "message": {
     "text": "Normal Paulk checked in changeset 18: Dropping in new Java sample",

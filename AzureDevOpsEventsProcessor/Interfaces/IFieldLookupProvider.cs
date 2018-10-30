@@ -11,7 +11,7 @@ using System.Text;
 namespace AzureDevOpsEventsProcessor.Interfaces
 {
     /// <summary>
-    /// The interface that defines how to lookup detail for a TFS work item
+    /// The interface that defines how to lookup detail for a Azure DevOps work item
     /// </summary>
     public interface IFieldLookupProvider
     {

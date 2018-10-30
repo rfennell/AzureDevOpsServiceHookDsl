@@ -13,7 +13,7 @@ namespace AzureDevOpsEventsProcessor.Dsl
     public interface IDslLibrary
     {
         /// <summary>
-        /// Instance of TFS provider
+        /// Instance of Azure DevOps provider
         /// </summary>
         IAzureDevOpsProvider TfsProvider { get; set; }
 

@@ -3,7 +3,7 @@
   "notificationId": 32,
   "id": "6872ee8c-b333-4eff-bfb9-0d5274943566",
   "eventType": "git.pullrequest.merged",
-  "publisherId": "tfs",
+  "publisherId": "Azure DevOps",
   "scope": "all",
   "message": {
     "text": "Jamal Hartnett has created a pull request merge commit",

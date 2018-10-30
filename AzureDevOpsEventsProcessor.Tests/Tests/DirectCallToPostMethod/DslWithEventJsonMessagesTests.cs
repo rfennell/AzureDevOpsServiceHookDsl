@@ -19,12 +19,12 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
 
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
 
             var sut = new Controllers.WebHookController(
                 emailProvider.Object,
-                tfsProvider.Object,
-                @"TestDataFiles\Scripts\tfs\alerts\fullscript.py", @".\dsl");
+                azureDevOpsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\fullscript.py", @".\dsl");
 
             // redirect the console
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
@@ -46,12 +46,12 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
 
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
 
             var sut = new Controllers.WebHookController(
                 emailProvider.Object,
-                tfsProvider.Object,
-                @"TestDataFiles\Scripts\tfs\alerts\fullscript.py", @".\dsl");
+                azureDevOpsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\fullscript.py", @".\dsl");
 
             // redirect the console
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
@@ -73,12 +73,12 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
 
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
 
             var sut = new Controllers.WebHookController(
                 emailProvider.Object,
-                tfsProvider.Object,
-                @"TestDataFiles\Scripts\tfs\alerts\fullscript.py", @".\dsl");
+                azureDevOpsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\fullscript.py", @".\dsl");
 
             // redirect the console
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
@@ -100,12 +100,12 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
 
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
 
             var sut = new Controllers.WebHookController(
                 emailProvider.Object,
-                tfsProvider.Object,
-                @"TestDataFiles\Scripts\tfs\alerts\fullscript.py", @".\dsl");
+                azureDevOpsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\fullscript.py", @".\dsl");
 
             // redirect the console
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
@@ -127,12 +127,12 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
 
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
 
             var sut = new Controllers.WebHookController(
                 emailProvider.Object,
-                tfsProvider.Object,
-                @"TestDataFiles\Scripts\tfs\alerts\fullscript.py", @".\dsl");
+                azureDevOpsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\fullscript.py", @".\dsl");
 
             // redirect the console
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
@@ -153,11 +153,11 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var alertMessage = ServiceHookTestData.GetEventJson("tfvc.checkin");
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var sut = new Controllers.WebHookController(
                 emailProvider.Object,
-                tfsProvider.Object,
-                @"TestDataFiles\Scripts\tfs\alerts\fullscript.py",
+                azureDevOpsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\fullscript.py",
                 @".\dsl");
 
             // redirect the console
@@ -179,11 +179,11 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var alertMessage = ServiceHookTestData.GetEventJson("git.push");
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var sut = new Controllers.WebHookController(
                 emailProvider.Object,
-                tfsProvider.Object,
-                @"TestDataFiles\Scripts\tfs\alerts\fullscript.py",
+                azureDevOpsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\fullscript.py",
                 @".\dsl");
 
             // redirect the console
@@ -204,12 +204,12 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var alertMessage = ServiceHookTestData.GetEventJson("workitem.created");
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
 
             var sut = new Controllers.WebHookController(
                 emailProvider.Object,
-                tfsProvider.Object,
-                @"TestDataFiles\Scripts\tfs\alerts\fullscript.py", @".\dsl");
+                azureDevOpsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\fullscript.py", @".\dsl");
 
             // redirect the console
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
@@ -230,12 +230,12 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var alertMessage = ServiceHookTestData.GetEventJson("message.posted");
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
 
             var sut = new Controllers.WebHookController(
                 emailProvider.Object,
-                tfsProvider.Object,
-                @"TestDataFiles\Scripts\tfs\alerts\fullscript.py", @".\dsl");
+                azureDevOpsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\fullscript.py", @".\dsl");
 
             // redirect the console
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
@@ -256,12 +256,12 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var alertMessage = ServiceHookTestData.GetEventJson("ms.vss-release.deployment-approval-completed-event");
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
 
             var sut = new Controllers.WebHookController(
                 emailProvider.Object,
-                tfsProvider.Object,
-                @"TestDataFiles\Scripts\tfs\alerts\fullscript.py", @".\dsl");
+                azureDevOpsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\fullscript.py", @".\dsl");
 
             // redirect the console
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
@@ -282,12 +282,12 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var alertMessage = ServiceHookTestData.GetEventJson("ms.vss-release.deployment-approval-pending-event");
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
 
             var sut = new Controllers.WebHookController(
                 emailProvider.Object,
-                tfsProvider.Object,
-                @"TestDataFiles\Scripts\tfs\alerts\fullscript.py", @".\dsl");
+                azureDevOpsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\fullscript.py", @".\dsl");
 
             // redirect the console
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
@@ -308,12 +308,12 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var alertMessage = ServiceHookTestData.GetEventJson("ms.vss-release.deployment-completed-event");
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
 
             var sut = new Controllers.WebHookController(
                 emailProvider.Object,
-                tfsProvider.Object,
-                @"TestDataFiles\Scripts\tfs\alerts\fullscript.py", @".\dsl");
+                azureDevOpsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\fullscript.py", @".\dsl");
 
             // redirect the console
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
@@ -334,12 +334,12 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var alertMessage = ServiceHookTestData.GetEventJson("ms.vss-release.deployment-started-event");
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
 
             var sut = new Controllers.WebHookController(
                 emailProvider.Object,
-                tfsProvider.Object,
-                @"TestDataFiles\Scripts\tfs\alerts\fullscript.py", @".\dsl");
+                azureDevOpsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\fullscript.py", @".\dsl");
 
             // redirect the console
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
@@ -360,12 +360,12 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var alertMessage = ServiceHookTestData.GetEventJson("ms.vss-release.release-abandoned-event");
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
 
             var sut = new Controllers.WebHookController(
                 emailProvider.Object,
-                tfsProvider.Object,
-                @"TestDataFiles\Scripts\tfs\alerts\fullscript.py", @".\dsl");
+                azureDevOpsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\fullscript.py", @".\dsl");
 
             // redirect the console
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
@@ -386,12 +386,12 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var alertMessage = ServiceHookTestData.GetEventJson("ms.vss-release.release-created-event");
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
 
             var sut = new Controllers.WebHookController(
                 emailProvider.Object,
-                tfsProvider.Object,
-                @"TestDataFiles\Scripts\tfs\alerts\fullscript.py", @".\dsl");
+                azureDevOpsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\fullscript.py", @".\dsl");
 
             // redirect the console
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
@@ -412,12 +412,12 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var alertMessage = ServiceHookTestData.GetEventJson("workitem.restored");
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
 
             var sut = new Controllers.WebHookController(
                 emailProvider.Object,
-                tfsProvider.Object,
-                @"TestDataFiles\Scripts\tfs\alerts\fullscript.py", @".\dsl");
+                azureDevOpsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\fullscript.py", @".\dsl");
 
             // redirect the console
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
@@ -438,12 +438,12 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var alertMessage = ServiceHookTestData.GetEventJson("workitem.deleted");
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
 
             var sut = new Controllers.WebHookController(
                 emailProvider.Object,
-                tfsProvider.Object,
-                @"TestDataFiles\Scripts\tfs\alerts\fullscript.py", @".\dsl");
+                azureDevOpsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\fullscript.py", @".\dsl");
 
             // redirect the console
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
@@ -464,12 +464,12 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var alertMessage = ServiceHookTestData.GetEventJson("dummy");
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
 
             var sut = new Controllers.WebHookController(
                 emailProvider.Object,
-                tfsProvider.Object,
-                @"TestDataFiles\Scripts\tfs\alerts\fullscript.py",
+                azureDevOpsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\fullscript.py",
                 @".\dsl");
 
             // redirect the console

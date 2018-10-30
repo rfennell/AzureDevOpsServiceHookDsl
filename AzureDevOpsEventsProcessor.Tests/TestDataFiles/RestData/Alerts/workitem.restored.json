@@ -3,7 +3,7 @@
   "notificationId": 43,
   "id": "1ca023d6-6cff-49dd-b3d1-302b69311810",
   "eventType": "workitem.restored",
-  "publisherId": "tfs",
+  "publisherId": "Azure DevOps",
   "scope": "all",
   "message": {
     "text": "Bug #5 (Some great new idea!) restored by Jamal Hartnett.\r\n(http://fabrikam-fiber-inc.visualstudio.com/web/wi.aspx?pcguid=74e918bf-3376-436d-bd20-8e8c1287f465&id=5)",

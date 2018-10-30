@@ -13,7 +13,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Helpers
     {
 
         /// <summary>
-        /// The json we get from the TFS server call
+        /// The json we get from the Azure DevOps server call
         /// </summary>
         /// <returns></returns>
         internal static JObject GetEventJson(string eventName)

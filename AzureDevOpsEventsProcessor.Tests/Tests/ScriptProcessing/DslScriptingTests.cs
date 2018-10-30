@@ -25,7 +25,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
         }
 
         [Test]
-        public void A_missing_TFS_provider_throws_exception()
+        public void A_missing_AzureDevOps_provider_throws_exception()
         {
             // arrange
             var engine = new AzureDevOpsEventsProcessor.Dsl.DslProcessor();
@@ -37,23 +37,23 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
         public void A_missing_Email_provider_throws_exception()
         {
             // arrange
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var engine = new AzureDevOpsEventsProcessor.Dsl.DslProcessor();
 
             // act // assert
-            Assert.Throws<ArgumentNullException>(() => engine.RunScript(@"testDataFiles\scripts\scripting\badscript1.py", tfsProvider.Object, null,null));
+            Assert.Throws<ArgumentNullException>(() => engine.RunScript(@"testDataFiles\scripts\scripting\badscript1.py", azureDevOpsProvider.Object, null,null));
         }
 
         [Test]
         public void A_missing_EventData_provider_throws_exception()
         {
             // arrange
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var emailProvider = new Moq.Mock<IEmailProvider>();
             var engine = new AzureDevOpsEventsProcessor.Dsl.DslProcessor();
 
             // act // assert
-            Assert.Throws<ArgumentNullException>(() => engine.RunScript(@"testDataFiles\scripts\scripting\badscript1.py", tfsProvider.Object, emailProvider.Object, null));
+            Assert.Throws<ArgumentNullException>(() => engine.RunScript(@"testDataFiles\scripts\scripting\badscript1.py", azureDevOpsProvider.Object, emailProvider.Object, null));
         }
 
         [Test]
@@ -61,14 +61,14 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
         {
             // arrange
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
             // act
             var engine = new AzureDevOpsEventsProcessor.Dsl.DslProcessor();
 
             // act // assert
-            Assert.Throws<SyntaxErrorException>(() => engine.RunScript(@"testDataFiles\scripts\scripting\badscript1.py", tfsProvider.Object, emailProvider.Object,eventDataProvider.Object));
+            Assert.Throws<SyntaxErrorException>(() => engine.RunScript(@"testDataFiles\scripts\scripting\badscript1.py", azureDevOpsProvider.Object, emailProvider.Object,eventDataProvider.Object));
         }
 
         [Test]
@@ -76,12 +76,12 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
         {
             // arrange
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
             var engine = new AzureDevOpsEventsProcessor.Dsl.DslProcessor();
 
             // act // assert
-            Assert.Throws<UnboundNameException>(() => engine.RunScript(@"testDataFiles\scripts\scripting\badscript2.py", tfsProvider.Object, emailProvider.Object,eventDataProvider.Object));
+            Assert.Throws<UnboundNameException>(() => engine.RunScript(@"testDataFiles\scripts\scripting\badscript2.py", azureDevOpsProvider.Object, emailProvider.Object,eventDataProvider.Object));
         }
 
 
@@ -94,7 +94,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             Console.SetOut(consoleOut);
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
 
@@ -108,7 +108,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             engine.RunScript(
                 @".\testDataFiles\scripts\scripting\args.py", 
                 args, 
-                tfsProvider.Object, 
+                azureDevOpsProvider.Object, 
                 emailProvider.Object,
                 eventDataProvider.Object);
 
@@ -127,7 +127,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             Console.SetOut(consoleOut);
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
             var args = new Dictionary<string, object>
@@ -142,7 +142,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
                 @".\testDataFiles\scripts\scripting", 
                 "args.py", 
                 args, 
-                tfsProvider.Object, 
+                azureDevOpsProvider.Object, 
                 emailProvider.Object, 
                 eventDataProvider.Object);
 
@@ -158,7 +158,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
         {
             // arrange
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
 
@@ -169,7 +169,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             // act
             engine.RunScript(
                 @"testDataFiles\scripts\scripting\twolibraries.py",
-                tfsProvider.Object,
+                azureDevOpsProvider.Object,
                 emailProvider.Object,
                 eventDataProvider.Object);
 
@@ -189,7 +189,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
         {
             // arrange
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
             // create a memory logger
@@ -202,7 +202,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
                 @"testDataFiles\scripts\scripting\args.py", 
                 string.Empty, 
                 null, 
-                tfsProvider.Object, 
+                azureDevOpsProvider.Object, 
                 emailProvider.Object, 
                 eventDataProvider.Object);
 
@@ -217,7 +217,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
         {
             // arrange
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
             // create a memory logger
@@ -230,7 +230,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
                 @"testDataFiles\scripts\scripting\args.py", 
                 string.Empty, 
                 null, 
-                tfsProvider.Object, 
+                azureDevOpsProvider.Object, 
                 emailProvider.Object, 
                 eventDataProvider.Object);
 

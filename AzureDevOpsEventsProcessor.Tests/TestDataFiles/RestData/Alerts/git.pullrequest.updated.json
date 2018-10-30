@@ -3,7 +3,7 @@
   "notificationId": 33,
   "id": "af07be1b-f3ad-44c8-a7f1-c4835f2df06b",
   "eventType": "git.pullrequest.updated",
-  "publisherId": "tfs",
+  "publisherId": "Azure DevOps",
   "scope": "all",
   "message": {
     "text": "Jamal Hartnett marked the pull request as completed",

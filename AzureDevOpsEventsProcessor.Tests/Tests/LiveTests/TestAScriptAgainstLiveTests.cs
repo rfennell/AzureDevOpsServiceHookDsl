@@ -34,8 +34,8 @@ namespace AzureDevOpsEventsProcessor.Tests.Live
             var eventType = "workitem.updated";
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new TfsProvider(uri, pat);
-            var tfseventDataProvider =  new Moq.Mock<IEventDataProvider>();
+            var azureDevOpsProvider = new AzureDevOpsProvider(uri, pat);
+            var eventDataProvider =  new Moq.Mock<IEventDataProvider>();
      
             var engine = new AzureDevOpsEventsProcessor.Dsl.DslProcessor();
             var args = new Dictionary<string, object>
@@ -46,11 +46,11 @@ namespace AzureDevOpsEventsProcessor.Tests.Live
             // act
             // add the name of the script you want to locally debug
             engine.RunScript(
-                @"TestDataFiles\Scripts\tfs\alerts\markparentasblocked.py",
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\markparentasblocked.py",
                 args,
-                tfsProvider,
+                azureDevOpsProvider,
                 emailProvider.Object,
-                tfseventDataProvider.Object
+                eventDataProvider.Object
                 );
 
             // assert

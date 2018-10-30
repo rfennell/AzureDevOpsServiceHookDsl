@@ -60,7 +60,7 @@ namespace AzureDevOpsEventsProcessor.Tests
         public void Can_get_email_address_from_simple_form()
         {
             // arrange
-            var provider = new AzureDevOpsEventsProcessor.Providers.TfsFieldLookupProvider();
+            var provider = new AzureDevOpsEventsProcessor.Providers.AzureDevOpsFieldLookupProvider();
 
             // act
             var actual = provider.BuildEmailAddress("bm-richard.fennell@outlook.com", string.Empty);
@@ -73,7 +73,7 @@ namespace AzureDevOpsEventsProcessor.Tests
         public void Can_get_email_address_from_long_form()
         {
             // arrange
-            var provider = new AzureDevOpsEventsProcessor.Providers.TfsFieldLookupProvider();
+            var provider = new AzureDevOpsEventsProcessor.Providers.AzureDevOpsFieldLookupProvider();
 
             // act
             var actual = provider.BuildEmailAddress("Richard Fennell(Work) < bm - richard.fennell@outlook.com >",string.Empty);
@@ -87,7 +87,7 @@ namespace AzureDevOpsEventsProcessor.Tests
         public void Can_get_email_address_from_name_only()
         {
             // arrange
-            var provider = new AzureDevOpsEventsProcessor.Providers.TfsFieldLookupProvider();
+            var provider = new AzureDevOpsEventsProcessor.Providers.AzureDevOpsFieldLookupProvider();
 
             // act
             var actual = provider.BuildEmailAddress("richard.fennell", "outlook.com");

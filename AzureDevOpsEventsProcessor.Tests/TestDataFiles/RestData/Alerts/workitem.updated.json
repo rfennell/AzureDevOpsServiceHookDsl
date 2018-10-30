@@ -1,7 +1,7 @@
 ﻿{
   "id": "27646e0e-b520-4d2b-9411-bba7524947cd",
   "eventType": "workitem.updated",
-  "publisherId": "tfs",
+  "publisherId": "Azure DevOps",
   "scope": "all",
   "message": {
     "text": "Bug #5 (Some great new idea!) updated by Jamal Hartnett.\r\n(http://fabrikam-fiber-inc.visualstudio.com/web/wi.aspx?pcguid=74e918bf-3376-436d-bd20-8e8c1287f465&id=5)",

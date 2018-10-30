@@ -1,7 +1,7 @@
 ﻿{
   "id": "4a5d99d6-1c75-4e53-91b9-ee80057d4ce3",
   "eventType": "build.complete",
-  "publisherId": "tfs",
+  "publisherId": "Azure DevOps",
   "scope": "all",
   "message": {
     "text": "Build ConsumerAddressModule_20150407.2 succeeded",

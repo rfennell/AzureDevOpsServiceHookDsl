@@ -3,7 +3,7 @@
   "notificationId": 31,
   "id": "2ab4e3d3-b7a6-425e-92b1-5a9982c1269e",
   "eventType": "git.pullrequest.created",
-  "publisherId": "tfs",
+  "publisherId": "Azure DevOps",
   "scope": "all",
   "message": {
     "text": "Jamal Hartnett created a new pull request",

@@ -27,10 +27,10 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var memLogger = Helpers.Logging.CreateMemoryTargetLogger(LogLevel.Debug);
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
-            var tfseventDataProvider = new Moq.Mock<IEventDataProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var eventDataProvider = new Moq.Mock<IEventDataProvider>();
             
-            tfsProvider.Setup(t => t.GetBuildDetails(It.IsAny<int>())).Returns(RestTestData.GetBuildDetails());
+            azureDevOpsProvider.Setup(t => t.GetBuildDetails(It.IsAny<int>())).Returns(RestTestData.GetBuildDetails());
 
             var engine = new AzureDevOpsEventsProcessor.Dsl.DslProcessor();
             var args = new Dictionary<string, object>
@@ -40,15 +40,15 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
 
             // act
             engine.RunScript(
-                @"TestDataFiles\Scripts\tfs\alerts\setbuildretensionbyresult.py",
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\setbuildretensionbyresult.py",
                 args,
-                tfsProvider.Object,
+                azureDevOpsProvider.Object,
                 emailProvider.Object,
-                tfseventDataProvider.Object
+                eventDataProvider.Object
                 );
 
             // assert
-            tfsProvider.Verify(t => t.SetBuildRetension(It.IsAny<Uri>(), true));
+            azureDevOpsProvider.Verify(t => t.SetBuildRetension(It.IsAny<Uri>(), true));
             emailProvider.Verify(e => e.SendEmailAlert("richard@blackmarble.co.uk", "20150716.2 retension set to True", "'20150716.2' retension set to 'True' as result was 'succeeded'"));
 
             Assert.AreEqual(4, memLogger.Logs.Count);
@@ -67,13 +67,13 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var memLogger = Helpers.Logging.CreateMemoryTargetLogger(LogLevel.Debug);
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
-            var tfseventDataProvider = new Moq.Mock<IEventDataProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
             var build = RestTestData.GetBuildDetails();
             build["result"] = "failed";
 
-            tfsProvider.Setup(t => t.GetBuildDetails(It.IsAny<int>())).Returns(build);
+            azureDevOpsProvider.Setup(t => t.GetBuildDetails(It.IsAny<int>())).Returns(build);
 
             var engine = new AzureDevOpsEventsProcessor.Dsl.DslProcessor();
             var args = new Dictionary<string, object>
@@ -83,15 +83,15 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
 
             // act
             engine.RunScript(
-                @"TestDataFiles\Scripts\tfs\alerts\setbuildretensionbyresult.py",
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\setbuildretensionbyresult.py",
                 args,
-                tfsProvider.Object,
+                azureDevOpsProvider.Object,
                 emailProvider.Object,
-                tfseventDataProvider.Object
+                eventDataProvider.Object
                 );
 
             // assert
-            tfsProvider.Verify(t => t.SetBuildRetension(It.IsAny<Uri>(), false));
+            azureDevOpsProvider.Verify(t => t.SetBuildRetension(It.IsAny<Uri>(), false));
             emailProvider.Verify(e => e.SendEmailAlert("richard@blackmarble.co.uk", "20150716.2 retension set to False", "'20150716.2' retension set to 'False' as result was 'failed'"));
 
             Assert.AreEqual(4, memLogger.Logs.Count);
@@ -113,7 +113,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var memLogger = Helpers.Logging.CreateMemoryTargetLogger(LogLevel.Error);
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
 
@@ -125,9 +125,9 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
 
             // act
             engine.RunScript(
-                @"TestDataFiles\Scripts\tfs\alerts\setbuildretensionbyresult.py", 
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\setbuildretensionbyresult.py", 
                 args, 
-                tfsProvider.Object, 
+                azureDevOpsProvider.Object, 
                 emailProvider.Object,
                 eventDataProvider.Object);
 

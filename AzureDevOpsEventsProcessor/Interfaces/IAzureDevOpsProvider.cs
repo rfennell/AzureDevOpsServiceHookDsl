@@ -11,12 +11,12 @@ using System.Collections.Generic;
 namespace AzureDevOpsEventsProcessor.Interfaces
 {
     /// <summary>
-    /// TFS service provider
+    /// Azure DevOps service provider
     /// </summary>
     public interface IAzureDevOpsProvider
     {
         /// <summary>
-        /// Creates an instance of the class used to communicate with TFS
+        /// Creates an instance of the class used to communicate with Azure DevOps
         /// </summary>
         /// <param name="uri">The TPC Url</param>
         void SetTpcUrl(Uri uri);
@@ -134,7 +134,7 @@ namespace AzureDevOpsEventsProcessor.Interfaces
         JObject GetCommitDetails(Uri uri);
 
         /// <summary>
-        /// Get a parameter argument from a TFS build
+        /// Get a parameter argument from a Azure DevOps build
         /// </summary>
         /// <param name="buildDefUri">The Uri of the build definition</param>
         /// <param name="key">The arguement name</param>
@@ -142,7 +142,7 @@ namespace AzureDevOpsEventsProcessor.Interfaces
         string GetBuildArgument(Uri buildDefUri, string key);
 
         /// <summary>
-        /// Set a parameter argument from a TFS build
+        /// Set a parameter argument from a Azure DevOps build
         /// </summary>
         /// <param name="buildDefUri">The Uri of the build definition</param>
         /// <param name="key">The arguement name</param>
@@ -151,7 +151,7 @@ namespace AzureDevOpsEventsProcessor.Interfaces
         JObject SetBuildArgument(Uri buildDefUri, string key, string value);
 
         /// <summary>
-        /// Get all parameter argument from a TFS build
+        /// Get all parameter argument from a Azure DevOps build
         /// </summary>
         /// <param name="buildDefUri">The Uri of the build definition</param>
         /// <returns>The value of the argument</returns>

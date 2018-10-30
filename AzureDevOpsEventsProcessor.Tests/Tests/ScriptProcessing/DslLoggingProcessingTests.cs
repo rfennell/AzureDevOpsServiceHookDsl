@@ -16,7 +16,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
         {
             // arrange
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
             
             // create a memory logger
@@ -26,7 +26,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             // act
             engine.RunScript(
                 @"TestDataFiles\Scripts\logging\logmessage.py", 
-                tfsProvider.Object, 
+                azureDevOpsProvider.Object, 
                 emailProvider.Object, 
                 eventDataProvider.Object);
 
@@ -47,7 +47,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
         {
             // arrange
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
             // create a memory logger
@@ -55,7 +55,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var engine = new AzureDevOpsEventsProcessor.Dsl.DslProcessor();
 
             // act
-            engine.RunScript(@"TestDataFiles\Scripts\logging\logmessage.py", tfsProvider.Object, emailProvider.Object, eventDataProvider.Object);
+            engine.RunScript(@"TestDataFiles\Scripts\logging\logmessage.py", azureDevOpsProvider.Object, emailProvider.Object, eventDataProvider.Object);
 
             // assert
             Assert.AreEqual(5, memLogger.Logs.Count);
@@ -72,7 +72,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
         {
             // arrange
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
 
@@ -81,7 +81,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var engine = new AzureDevOpsEventsProcessor.Dsl.DslProcessor();
 
             // act
-            engine.RunScript(@"TestDataFiles\Scripts\logging\logmessage.py", tfsProvider.Object, emailProvider.Object, eventDataProvider.Object);
+            engine.RunScript(@"TestDataFiles\Scripts\logging\logmessage.py", azureDevOpsProvider.Object, emailProvider.Object, eventDataProvider.Object);
 
             // assert
             Assert.AreEqual(1, memLogger.Logs.Count);

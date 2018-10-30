@@ -32,7 +32,7 @@ namespace AzureDevOpsEventsProcessor.Controllers
         private readonly IEmailProvider iEmailProvider;
 
         /// <summary>
-        /// Instance of TFS provider
+        /// Instance of Azure DevOps provider
         /// </summary>
         private IAzureDevOpsProvider iAzureDevOpsProvider;
 
@@ -103,7 +103,7 @@ namespace AzureDevOpsEventsProcessor.Controllers
         public HttpResponseMessage Get()
         {
             var response = new HttpResponseMessage(HttpStatusCode.OK);
-            var msg = $"Get: TfsAlertsDsl version {this.GetType().Assembly.GetName().Version} running on server @{Environment.MachineName}";
+            var msg = $"Get: AzureDevOpsersion {this.GetType().Assembly.GetName().Version} running on server @{Environment.MachineName}";
             logger.Info(msg);
             response.Content = new StringContent(msg);
             return response;
@@ -137,12 +137,12 @@ namespace AzureDevOpsEventsProcessor.Controllers
                 if (string.IsNullOrEmpty(locationpat.Item2) == false)
                 {
                     logger.Info($"Post: Using a PAT token and obtained from {locationpat.Item1}");
-                    this.iAzureDevOpsProvider = new Providers.TfsProvider(uri, locationpat.Item2);
+                    this.iAzureDevOpsProvider = new Providers.AzureDevOpsProvider(uri, locationpat.Item2);
                 }
                 else
                 {
                     logger.Info(string.Format("Post: Using default credentials and url {0}", uri));
-                    this.iAzureDevOpsProvider = new Providers.TfsProvider(uri);
+                    this.iAzureDevOpsProvider = new Providers.AzureDevOpsProvider(uri);
                 }
 
                 // work out the event type

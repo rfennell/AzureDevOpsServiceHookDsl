@@ -27,8 +27,8 @@
 
             // arrange
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
-            tfsProvider.Setup(t => t.GetWorkItem(99)).Returns(RestTestData.GetSingleWorkItemByID());
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            azureDevOpsProvider.Setup(t => t.GetWorkItem(99)).Returns(RestTestData.GetSingleWorkItemByID());
 
             var engine = new AzureDevOpsEventsProcessor.Dsl.DslProcessor();
 
@@ -37,10 +37,10 @@
             // act
             engine.RunScript(
                 @".\dsl",
-                @"TestDataFiles\Scripts\tfs\alerts",
+                @"TestDataFiles\Scripts\AzureDevOps\alerts",
                 "sendtemplatedemail.py",
                 args,
-                tfsProvider.Object,
+                azureDevOpsProvider.Object,
                 emailProvider.Object,
                 new Providers.JsonDataProvider(ServiceHookTestData.GetEventJson("workitem.updated")));
 
@@ -49,7 +49,7 @@
                 e =>
                 e.SendEmailAlert(
                     Moq.It.IsAny<IFieldLookupProvider>(),
-                    System.IO.Path.Combine(engine.BasePath, @"TestDataFiles\Scripts\tfs\alerts\EmailTemplate.htm"),
+                    System.IO.Path.Combine(engine.BasePath, @"TestDataFiles\Scripts\AzureDevOps\alerts\EmailTemplate.htm"),
                     true,
                     true));
         }
@@ -60,10 +60,10 @@
             // arrange
             var emailProvider = new Moq.Mock<IEmailProvider>();
 
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
-            tfsProvider.Setup(t => t.GetBuildDetails(It.IsAny<int>())).Returns(RestTestData.GetBuildDetails());
-            tfsProvider.Setup(t => t.GetBuildArgument(It.IsAny<Uri>(), "MajorVersion")).Returns("1");
-            tfsProvider.Setup(t => t.GetBuildArgument(It.IsAny<Uri>(), "MinorVersion")).Returns("6");
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            azureDevOpsProvider.Setup(t => t.GetBuildDetails(It.IsAny<int>())).Returns(RestTestData.GetBuildDetails());
+            azureDevOpsProvider.Setup(t => t.GetBuildArgument(It.IsAny<Uri>(), "MajorVersion")).Returns("1");
+            azureDevOpsProvider.Setup(t => t.GetBuildArgument(It.IsAny<Uri>(), "MinorVersion")).Returns("6");
     
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
@@ -79,9 +79,9 @@
 
             // act
             engine.RunScript(
-                @"TestDataFiles\Scripts\tfs\alerts\incrementbuildargument.py",
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\incrementbuildargument.py",
                 args,
-                tfsProvider.Object,
+                azureDevOpsProvider.Object,
                 emailProvider.Object,
                 eventDataProvider.Object);
 
@@ -103,10 +103,10 @@
             var memLogger = Helpers.Logging.CreateMemoryTargetLogger(LogLevel.Debug);
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
-            tfsProvider.Setup(t => t.GetWorkItem(It.IsAny<int>())).Returns(RestTestData.GetSingleWorkItemByID());
-            tfsProvider.Setup(t => t.GetParentWorkItem(It.IsAny<JObject>())).Returns(RestTestData.GetSingleWorkItemByID());
-            tfsProvider.Setup(t => t.GetChildWorkItems(It.IsAny<JObject>())).Returns(RestTestData.GetSetOfWorkItemsByID(true));
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            azureDevOpsProvider.Setup(t => t.GetWorkItem(It.IsAny<int>())).Returns(RestTestData.GetSingleWorkItemByID());
+            azureDevOpsProvider.Setup(t => t.GetParentWorkItem(It.IsAny<JObject>())).Returns(RestTestData.GetSingleWorkItemByID());
+            azureDevOpsProvider.Setup(t => t.GetChildWorkItems(It.IsAny<JObject>())).Returns(RestTestData.GetSetOfWorkItemsByID(true));
 
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
@@ -116,9 +116,9 @@
 
             // act
             engine.RunScript(
-                @"TestDataFiles\Scripts\tfs\alerts\changeparentworkitemstate.py",
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\changeparentworkitemstate.py",
                 args,
-                tfsProvider.Object,
+                azureDevOpsProvider.Object,
                 emailProvider.Object,
                 eventDataProvider.Object);
 
@@ -128,7 +128,7 @@
                 Console.WriteLine(line);
             }
 
-            tfsProvider.Verify(t => t.UpdateWorkItem(It.IsAny<JObject>()));
+            azureDevOpsProvider.Verify(t => t.UpdateWorkItem(It.IsAny<JObject>()));
             emailProvider.Verify(
                 e => e.SendEmailAlert(
                     "richard@blackmarble.co.uk",
@@ -144,10 +144,10 @@
             var memLogger = Helpers.Logging.CreateMemoryTargetLogger(LogLevel.Debug);
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
-            tfsProvider.Setup(t => t.GetWorkItem(It.IsAny<int>())).Returns(RestTestData.GetSingleWorkItemByID());
-            tfsProvider.Setup(t => t.GetParentWorkItem(It.IsAny<JObject>())).Returns(RestTestData.GetSingleWorkItemByID());
-            tfsProvider.Setup(t => t.GetChildWorkItems(It.IsAny<JObject>())).Returns(RestTestData.GetSetOfWorkItemsByID(false));
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            azureDevOpsProvider.Setup(t => t.GetWorkItem(It.IsAny<int>())).Returns(RestTestData.GetSingleWorkItemByID());
+            azureDevOpsProvider.Setup(t => t.GetParentWorkItem(It.IsAny<JObject>())).Returns(RestTestData.GetSingleWorkItemByID());
+            azureDevOpsProvider.Setup(t => t.GetChildWorkItems(It.IsAny<JObject>())).Returns(RestTestData.GetSetOfWorkItemsByID(false));
 
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
@@ -157,9 +157,9 @@
 
             // act
             engine.RunScript(
-                @"TestDataFiles\Scripts\tfs\alerts\changeparentworkitemstate.py",
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\changeparentworkitemstate.py",
                 args,
-                tfsProvider.Object,
+                azureDevOpsProvider.Object,
                 emailProvider.Object,
                 eventDataProvider.Object);
 
@@ -169,7 +169,7 @@
                 Console.WriteLine(line);
             }
 
-            tfsProvider.Verify(t => t.UpdateWorkItem(It.IsAny<JObject>()), Times.Never());
+            azureDevOpsProvider.Verify(t => t.UpdateWorkItem(It.IsAny<JObject>()), Times.Never());
 
         }
     }

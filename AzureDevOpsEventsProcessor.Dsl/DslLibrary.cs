@@ -35,12 +35,12 @@ namespace AzureDevOpsEventsProcessor.Dsl
         public string ScriptFolder { get; set; }
  
         /// <summary>
-        /// Instance of TFS provider
+        /// Instance of Azure DevOps provider
         /// </summary>
         public IAzureDevOpsProvider TfsProvider { get; set; }
   
         /// <summary>
-        /// Instance of TFS provider
+        /// Instance of Azure DevOps provider
         /// </summary>
         public IEventDataProvider EventData { get; set; }
 
@@ -52,7 +52,7 @@ namespace AzureDevOpsEventsProcessor.Dsl
         /// <summary>
         /// Constructor for DSL library
         /// </summary>
-        /// <param name="IAzureDevOpsProvider">The TFS provider</param>
+        /// <param name="IAzureDevOpsProvider">The Azure DevOps provider</param>
         /// <param name="iEmailProvider">The Email provider</param>
         public DslLibrary(IAzureDevOpsProvider iAzureDevOpsProvider, IEmailProvider iEmailProvider)
         {
@@ -119,7 +119,7 @@ namespace AzureDevOpsEventsProcessor.Dsl
         }
 
         /// <summary>
-        /// Gets a work item from TFS
+        /// Gets a work item from Azure DevOps
         /// </summary>
         /// <param name="id">The work item ID</param>
         /// <returns>A workitem</returns>
@@ -129,7 +129,7 @@ namespace AzureDevOpsEventsProcessor.Dsl
         }
 
         /// <summary>
-        /// Gets a parent work item from TFS
+        /// Gets a parent work item from Azure DevOps
         /// </summary>
         /// <param name="wi">The work item to find parent for</param>
         /// <returns>A workitem</returns>
@@ -139,7 +139,7 @@ namespace AzureDevOpsEventsProcessor.Dsl
         }
 
         /// <summary>
-        /// Gets the child work items for a work item from TFS
+        /// Gets the child work items for a work item from Azure DevOps
         /// </summary>
         /// <param name="wi">The work item to find parent for</param>
         /// <returns>A workitem</returns>
@@ -286,8 +286,8 @@ namespace AzureDevOpsEventsProcessor.Dsl
             // Get this list of changes
             var alertItems = this.EventData.GetWorkItemDetails();
 
-            // Create a new Tfs helper
-            var fieldLookupProvider = new TfsFieldLookupProvider(
+            // Create a new Azure DevOps helper
+            var fieldLookupProvider = new AzureDevOpsFieldLookupProvider(
                 this.TfsProvider.GetWorkItem(workItemId),
                 alertItems.ChangedAlertFields,
                 alertItems.ChangedBy,

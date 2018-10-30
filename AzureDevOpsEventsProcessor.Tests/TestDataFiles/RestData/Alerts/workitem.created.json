@@ -1,7 +1,7 @@
 ﻿{
   "id": "d2d46fb1-dba5-403c-9373-427583f19e8c",
   "eventType": "workitem.created",
-  "publisherId": "tfs",
+  "publisherId": "Azure DevOps",
   "scope": "all",
   "message": {
     "text": "Bug #5 (Some great new idea!) created by Jamal Hartnett.\r\n(http://fabrikam-fiber-inc.visualstudio.com/web/wi.aspx?pcguid=74e918bf-3376-436d-bd20-8e8c1287f465&id=5)",

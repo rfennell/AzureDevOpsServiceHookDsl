@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TFSEventsProcessor.Tests")]
+[assembly: AssemblyTitle("AzureDevOpsEventsProcessor.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Black Marble")]
-[assembly: AssemblyProduct("TFSEventsProcessor.Tests")]
+[assembly: AssemblyProduct("AzureDevOpsEventsProcessor.Tests")]
 [assembly: AssemblyCopyright("Copyright © Black Marble 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

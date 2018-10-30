@@ -1,5 +1,5 @@
 ﻿//------------------------------------------------------------------------------------------------- 
-// <copyright file="TfsFieldLookupProvider.cs" company="Black Marble">
+// <copyright file="AzureDevOpsFieldLookupProvider.cs" company="Black Marble">
 // Copyright (c) Black Marble. All rights reserved.
 // </copyright>
 //-------------------------------------------------------------------------------------------------
@@ -18,9 +18,9 @@ using System.Text.RegularExpressions;
 namespace AzureDevOpsEventsProcessor.Providers
 {
     /// <summary>
-    /// Expands a work item using a TFS server
+    /// Expands a work item using a Azure DevOps server
     /// </summary>
-    public class TfsFieldLookupProvider : IFieldLookupProvider
+    public class AzureDevOpsFieldLookupProvider : IFieldLookupProvider
     {
         /// <summary>
         /// Instance of nLog interface
@@ -62,20 +62,20 @@ namespace AzureDevOpsEventsProcessor.Providers
         /// <summary>
         /// A constructor that is provided to allow mocking of the 
         /// virtual methods. This allows us to use MOQ without the need
-        /// to mock out the whole of TFS
+        /// to mock out the whole of Azure DevOps
         /// </summary>
-        public TfsFieldLookupProvider()
+        public AzureDevOpsFieldLookupProvider()
         {
         }
 
         /// <summary>
-        /// Expands a TFS work item
+        /// Expands a Azure DevOps work item
         /// </summary>
         /// <param name="workItem">The work item</param>
         /// <param name="alertItems">List of alert changes</param>
         /// <param name="changedBy">Who edited the work item</param>
         /// <param name="showMissingFieldNames">If true the name of any missing field is printed</param>
-        public TfsFieldLookupProvider(JObject workItem, List<WorkItemChangedAlertDetails> alertItems, string changedBy, bool showMissingFieldNames)
+        public AzureDevOpsFieldLookupProvider(JObject workItem, List<WorkItemChangedAlertDetails> alertItems, string changedBy, bool showMissingFieldNames)
         {
             this.workItem = workItem;
             this.alertItems = alertItems;
@@ -321,7 +321,7 @@ namespace AzureDevOpsEventsProcessor.Providers
                 }
                 catch
                 {
-                    // on tfs 2012 we get the displayname as opposed to uid, so we to check
+                    // on Azure DevOps 2012 we get the displayname as opposed to uid, so we to check
                     var tmpName = GetUserIdFromDisplayName(name);
                     if (string.IsNullOrEmpty(tmpName))
                     {

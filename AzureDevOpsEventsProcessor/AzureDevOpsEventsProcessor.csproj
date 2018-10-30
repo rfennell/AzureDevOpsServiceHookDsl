@@ -292,8 +292,8 @@
     <Compile Include="EmailTemplate.cs" />
     <Compile Include="Interfaces\IFieldLookupProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Providers\TfsFieldLookupProvider.cs" />
-    <Compile Include="Providers\TfsProvider.cs" />
+    <Compile Include="Providers\AzureDevOpsFieldLookupProvider.cs" />
+    <Compile Include="Providers\AzureDevOpsProvider.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

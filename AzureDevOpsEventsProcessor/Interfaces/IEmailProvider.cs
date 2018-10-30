@@ -28,7 +28,7 @@ namespace AzureDevOpsEventsProcessor.Interfaces
         /// <summary>
         /// Sends the email build from a work item
         /// </summary>
-        /// <param name="fieldsLookupProvider">The provider that extracts the data from TFS</param>
+        /// <param name="fieldsLookupProvider">The provider that extracts the data from Azure DevOps</param>
         /// <param name="templatePath">The path to the HTM (like) template file</param>
         /// <param name="includeAllWorkItemFields">If true all available work item fields are appended to the email body</param>
         /// <param name="includeAllAlertFields">If true all available alert fields are appended to the email body</param>

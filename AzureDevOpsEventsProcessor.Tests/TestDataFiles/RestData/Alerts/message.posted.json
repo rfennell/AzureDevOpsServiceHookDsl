@@ -3,7 +3,7 @@
   "notificationId": 40,
   "id": "daae438c-296b-4512-b08e-571910874e9b",
   "eventType": "message.posted",
-  "publisherId": "tfs",
+  "publisherId": "Azure DevOps",
   "scope": "all",
   "message": {
     "text": "Jamal Hartnett posted a message to Fabrikam-Fiber-Git Team Room\r\nHello",

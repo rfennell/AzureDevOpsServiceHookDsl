@@ -13,7 +13,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Helpers
     {
 
         /// <summary>
-        /// The json we get from the TFS server call
+        /// The json we get from the Azure DevOps server call
         /// </summary>
         /// <returns></returns>
         internal static JObject GetSingleWorkItemWithReleationshipsByID()
@@ -24,7 +24,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Helpers
        }
 
         /// <summary>
-        /// The json we get from the TFS server call
+        /// The json we get from the Azure DevOps server call
         /// </summary>
         /// <returns></returns>
         internal static JObject GetSingleWorkItemByID()
@@ -35,7 +35,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Helpers
         }
 
         /// <summary>
-        /// The json we get from the TFS server call
+        /// The json we get from the Azure DevOps server call
         /// </summary>
         /// <returns></returns>
         internal static JObject GetSingleWorkItemByIndexFromSet(int index)
@@ -47,7 +47,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Helpers
 
 
         /// <summary>
-        /// The json we get from the TFS server call
+        /// The json we get from the Azure DevOps server call
         /// </summary>
         /// <returns></returns>
         internal static JObject CreateWorkItem()
@@ -65,7 +65,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Helpers
         }
 
         /// <summary>
-        /// The json we get from the TFS server call
+        /// The json we get from the Azure DevOps server call
         /// </summary>
         /// <returns></returns>
         internal static IEnumerable<JObject> GetSetOfWorkItemsByID(bool allMarkedAsDone)

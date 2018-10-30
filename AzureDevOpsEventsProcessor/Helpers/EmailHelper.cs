@@ -19,7 +19,7 @@ namespace AzureDevOpsEventsProcessor.Helpers
         /// <summary>
         /// Expands the fields in the template using the lookup provider
         /// </summary>
-        /// <param name="fieldsLookup">A TFS lookup provider</param>
+        /// <param name="fieldsLookup">A Azure DevOps lookup provider</param>
         /// <param name="template">The HTML like template</param>
         /// <returns>An expanded message</returns>
         internal static string ExpandTemplateFields(IFieldLookupProvider fieldsLookup, string template)

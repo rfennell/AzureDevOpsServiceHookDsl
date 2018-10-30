@@ -17,7 +17,7 @@ namespace Sample.Dsl
     {
 
         /// <summary>
-        /// The link to TFS
+        /// The link to Azure DevOps
         /// </summary>
         public IAzureDevOpsProvider TfsProvider { get; set; }
         /// <summary>

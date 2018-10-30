@@ -32,9 +32,9 @@ namespace AzureDevOpsEventsProcessor.Tests.Helpers
         /// </summary>
         /// <param name="assignedTo">Who the call is assigned to</param>
         /// <returns>The fake instance</returns>
-        internal static Mock<TfsFieldLookupProvider> MockedTfsFieldLookupProvider(string assignedTo)
+        internal static Mock<AzureDevOpsFieldLookupProvider> MockedAzureDevOpsFieldLookupProvider(string assignedTo)
         {
-            var mock = new Moq.Mock<TfsFieldLookupProvider>();
+            var mock = new Moq.Mock<AzureDevOpsFieldLookupProvider>();
             mock.Setup(f => f.LookupWorkItemFieldValue("System.AssignedTo")).Returns(assignedTo);
             mock.Setup(f => f.GetUserIdFromDisplayName(assignedTo)).Returns(assignedTo);
             return mock;
@@ -55,7 +55,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Helpers
         /// Creates a mock instance using Moq
         /// </summary>
         /// <returns>The fake instance</returns>
-        internal static Mock<IAzureDevOpsProvider> MockedTfsProvider()
+        internal static Mock<IAzureDevOpsProvider> MockedazureDevOpsProvider()
         {
             var mock = new Mock<IAzureDevOpsProvider>();
             return mock;

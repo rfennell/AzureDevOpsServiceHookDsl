@@ -1,5 +1,5 @@
 ﻿//------------------------------------------------------------------------------------------------- 
-// <copyright file="TfsProvider.cs" company="Black Marble">
+// <copyright file="AzureDevOpsProvider.cs" company="Black Marble">
 // Copyright (c) Black Marble. All rights reserved.
 // </copyright>
 //-------------------------------------------------------------------------------------------------
@@ -18,9 +18,9 @@ using System.Text;
 namespace AzureDevOpsEventsProcessor.Providers
 {
     /// <summary>
-    /// Class to manage the connection to TFS
+    /// Class to manage the connection to Azure DevOps
     /// </summary>
-    public class TfsProvider : IAzureDevOpsProvider
+    public class AzureDevOpsProvider : IAzureDevOpsProvider
     {
         /// <summary>
         /// Instance of nLog interface
@@ -28,57 +28,57 @@ namespace AzureDevOpsEventsProcessor.Providers
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
         /// <summary>
-        /// The current TFS instance
+        /// The current Azure DevOps instance
         /// </summary>
         private readonly Uri tpcUri;
 
         /// <summary>
-        /// Username to access TFS
+        /// Username to access Azure DevOps
         /// </summary>
         private readonly string username;
 
         /// <summary>
-        /// Password to access TFS
+        /// Password to access Azure DevOps
         /// </summary>
         private readonly string password;
 
 
         /// <summary>
-        /// Creates an instance of the class used to communicate with TFS
+        /// Creates an instance of the class used to communicate with Azure DevOps
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2201:DoNotRaiseReservedExceptionTypes", Justification = "Cannot build if use a more limited exception")]
-        public TfsProvider()
+        public AzureDevOpsProvider()
         {
         }
 
         /// <summary>
-        /// Creates an instance of the class used to communicate with TFS
+        /// Creates an instance of the class used to communicate with Azure DevOps
         /// </summary>
         /// <param name="serverUri">The server address</param>
-        public TfsProvider(Uri serverUri)
+        public AzureDevOpsProvider(Uri serverUri)
         {
             this.tpcUri = serverUri;
         }
 
         /// <summary>
-        /// Creates an instance of the class used to communicate with TFS
+        /// Creates an instance of the class used to communicate with Azure DevOps
         /// </summary>
         /// <param name="serverUri">The server address</param>
-        public TfsProvider(Uri serverUri, string pat)
+        public AzureDevOpsProvider(Uri serverUri, string pat)
         {
-            // Instantiate a reference to the TFS Project Collection
+            // Instantiate a reference to the Azure DevOps Project Collection
             this.tpcUri = serverUri;
             this.username = string.Empty;
             this.password = pat;
         }
 
         /// <summary>
-        /// Creates an instance of the class used to communicate with TFS
+        /// Creates an instance of the class used to communicate with Azure DevOps
         /// </summary>
         /// <param name="serverUri">The server address</param>
-        public TfsProvider(Uri serverUri, string username, string password)
+        public AzureDevOpsProvider(Uri serverUri, string username, string password)
         {
-            // Instantiate a reference to the TFS Project Collection
+            // Instantiate a reference to the Azure DevOps Project Collection
             this.tpcUri = serverUri;
             this.username = username;
             this.password = password;
@@ -486,7 +486,7 @@ namespace AzureDevOpsEventsProcessor.Providers
 
 
         /// <summary>
-        /// Get a parameter argument from a TFS build
+        /// Get a parameter argument from a Azure DevOps build
         /// </summary>
         /// <param name="buildDefUri">The Uri of the build definition</param>
         /// <param name="key">The arguement name</param>
@@ -509,7 +509,7 @@ namespace AzureDevOpsEventsProcessor.Providers
         }
 
         /// <summary>
-        /// Get all parameter argument from a TFS build
+        /// Get all parameter argument from a Azure DevOps build
         /// </summary>
         /// <param name="buildDefUri">The Uri of the build definition</param>
         /// <returns>The value of the argument</returns>
@@ -522,7 +522,7 @@ namespace AzureDevOpsEventsProcessor.Providers
         }
 
         /// <summary>
-        /// Set a parameter argument from a TFS build
+        /// Set a parameter argument from a Azure DevOps build
         /// </summary>
         /// <param name="buildDefUri">The Uri of the build definition</param>
         /// <param name="key">The arguement name</param>

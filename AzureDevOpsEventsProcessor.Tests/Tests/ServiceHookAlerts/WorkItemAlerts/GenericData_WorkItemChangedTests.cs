@@ -8,7 +8,7 @@ namespace AzureDevOpsEventsProcessor.Tests
 
     /// <summary>
     /// These test focus on the XML alerts as it deamed not a good investment in time to 
-    /// try to fake out the whole of TFS, hence passing in nulls for TFS work item
+    /// try to fake out the whole of Azure DevOps, hence passing in nulls for Azure DevOps work item
     /// We would need to Fake Shims or Typemock to do this
     /// </summary>
     [TestFixture]
@@ -20,7 +20,7 @@ namespace AzureDevOpsEventsProcessor.Tests
             // arrange
             var alerts = GenericTestData.DummyAlerts();
 
-            var provider = new  TfsFieldLookupProvider(null, alerts, "user1", false);
+            var provider = new  AzureDevOpsFieldLookupProvider(null, alerts, "user1", false);
 
             //// act
             var actual = provider.LookupAlertFieldValue("r1");
@@ -35,7 +35,7 @@ namespace AzureDevOpsEventsProcessor.Tests
             //// arrange
             var alerts = GenericTestData.DummyAlerts();
 
-            var provider = new TfsFieldLookupProvider(null, alerts, "user1", false);
+            var provider = new AzureDevOpsFieldLookupProvider(null, alerts, "user1", false);
 
             // act
             var actual = provider.LookupAlertFieldValue("System.ChangedBy");
@@ -50,7 +50,7 @@ namespace AzureDevOpsEventsProcessor.Tests
             // arrange
             var alerts = GenericTestData.DummyAlerts();
 
-            var provider = new TfsFieldLookupProvider(null, alerts, "user1", true);
+            var provider = new AzureDevOpsFieldLookupProvider(null, alerts, "user1", true);
 
             // act
             var actual = provider.LookupAlertFieldValue("NOT.REAL");
@@ -65,7 +65,7 @@ namespace AzureDevOpsEventsProcessor.Tests
             // arrange
             var alerts = GenericTestData.DummyAlerts();
 
-            var provider = new TfsFieldLookupProvider(null, alerts, "user1", false);
+            var provider = new AzureDevOpsFieldLookupProvider(null, alerts, "user1", false);
 
             // act
             var actual = provider.LookupAlertFieldValue("NOT.REAL");
@@ -84,7 +84,7 @@ namespace AzureDevOpsEventsProcessor.Tests
             var alerts = new List<WorkItemChangedAlertDetails>() {
                 new WorkItemChangedAlertDetails() { ReferenceName="r1", OldValue=null, NewValue = null}};
 
-            var provider = new TfsFieldLookupProvider(null, alerts, "user1", false);
+            var provider = new AzureDevOpsFieldLookupProvider(null, alerts, "user1", false);
 
             // act
             var actual = provider.LookupAlertFieldValue("r1");
@@ -101,7 +101,7 @@ namespace AzureDevOpsEventsProcessor.Tests
         public void User1_changes_details_WI_assigned_User2_Mail_sent_to_User2 ()
         {
             // arrange
-            var provider = TestProviderFactory.MockedTfsFieldLookupProvider("user2").Object;
+            var provider = TestProviderFactory.MockedAzureDevOpsFieldLookupProvider("user2").Object;
             provider.SetChangedBy("user1");
             provider.SetTestAlertItems(GenericTestData.DummyAlerts());
    
@@ -117,7 +117,7 @@ namespace AzureDevOpsEventsProcessor.Tests
         public void User_changes_details_of_WI_assigned_to_self_no_mail_sent()
         {
             // arrange
-            var provider = TestProviderFactory.MockedTfsFieldLookupProvider("user1").Object;
+            var provider = TestProviderFactory.MockedAzureDevOpsFieldLookupProvider("user1").Object;
             provider.SetChangedBy("user1");
             provider.SetTestAlertItems (GenericTestData.DummyAlerts());
          
@@ -132,7 +132,7 @@ namespace AzureDevOpsEventsProcessor.Tests
         public void User1_reassigns_WI_from_self_to_User2_mail_sent_to_user2()
         {
             // arrange
-            var provider = TestProviderFactory.MockedTfsFieldLookupProvider("user2").Object;
+            var provider = TestProviderFactory.MockedAzureDevOpsFieldLookupProvider("user2").Object;
             provider.SetChangedBy("user1");
             provider.SetTestAlertItems(GenericTestData.AssignedToChangedAlerts("user1","user2"));
 
@@ -147,7 +147,7 @@ namespace AzureDevOpsEventsProcessor.Tests
         public void User1_reassigns_WI_from_User2_to_self_mail_sent_to_user2()
         {
             // arrange
-            var provider = TestProviderFactory.MockedTfsFieldLookupProvider("user1").Object;
+            var provider = TestProviderFactory.MockedAzureDevOpsFieldLookupProvider("user1").Object;
             provider.SetChangedBy("user1");
             provider.SetTestAlertItems(GenericTestData.AssignedToChangedAlerts("user2", "user1"));
 
@@ -162,7 +162,7 @@ namespace AzureDevOpsEventsProcessor.Tests
         public void User1_reassigns_WI_User2_to_User3_mail_sent_to_both()
         {
             // arrange
-            var provider = TestProviderFactory.MockedTfsFieldLookupProvider("user3").Object;
+            var provider = TestProviderFactory.MockedAzureDevOpsFieldLookupProvider("user3").Object;
             provider.SetChangedBy("user1");
             provider.SetTestAlertItems(GenericTestData.AssignedToChangedAlerts("user2", "user3"));
 

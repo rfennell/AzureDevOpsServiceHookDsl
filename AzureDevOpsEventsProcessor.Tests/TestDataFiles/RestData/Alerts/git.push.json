@@ -3,7 +3,7 @@
   "notificationId": 2,
   "id": "9063d285-397c-4509-a98e-97a319c99346",
   "eventType": "git.push",
-  "publisherId": "tfs",
+  "publisherId": "Azure DevOps",
   "scope": "all",
   "message": {
     "text": "Richard Fennell (Personal) pushed updates to branch master of SampleProject\r\n(https://richardfennell.visualstudio.com/_git/SampleProject/#version=GBmaster)",

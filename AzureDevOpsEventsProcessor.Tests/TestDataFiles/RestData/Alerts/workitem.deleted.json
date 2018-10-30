@@ -3,7 +3,7 @@
   "notificationId": 42,
   "id": "72da0ade-0709-40ee-beb7-104287bf7e84",
   "eventType": "workitem.deleted",
-  "publisherId": "tfs",
+  "publisherId": "Azure DevOps",
   "scope": "all",
   "message": {
     "text": "Bug #5 (Some great new idea!) deleted by Jamal Hartnett.",

@@ -62,7 +62,7 @@ namespace AzureDevOpsEventsProcessor.Dsl
         /// Runs a named Pyphon script that uses the DSL
         /// </summary>
         /// <param name="scriptname">The python script file</param>
-        /// <param name="IAzureDevOpsProvider">The TFS provider</param>
+        /// <param name="IAzureDevOpsProvider">The Azure DevOps provider</param>
         /// <param name="iEmailProvider">The email provider</param>
         /// <param name="iEventdataProvider">The raw data provider</param>
         public void RunScript(
@@ -87,7 +87,7 @@ namespace AzureDevOpsEventsProcessor.Dsl
         /// </summary>
         /// <param name="scriptname">The python script file</param>
         /// <param name="args">The parameters to pass to the script</param>
-        /// <param name="IAzureDevOpsProvider">The TFS provider</param>
+        /// <param name="IAzureDevOpsProvider">The Azure DevOps provider</param>
         /// <param name="iEmailProvider">The email provider</param>
         /// <param name="iEventdataProvider">The raw data provider</param>
         public void RunScript(
@@ -114,7 +114,7 @@ namespace AzureDevOpsEventsProcessor.Dsl
         /// <param name="scriptFolder">The base folder to load scripts file</param>
         /// <param name="scriptname">The python script file, this can be a full path or a file in the base folder</param>
         /// <param name="args">The parameters to pass to the script</param>
-        /// <param name="IAzureDevOpsProvider">The TFS provider</param>
+        /// <param name="IAzureDevOpsProvider">The Azure DevOps provider</param>
         /// <param name="iEmailProvider">The email provider</param>
         /// <param name="iEventData">The raw XML or Json data from the event</param>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling", Justification = "Allowing complexity as this method pulling in the whole DSL")]

@@ -30,16 +30,16 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
-            tfsProvider.Setup(t => t.GetWorkItem(297)).Returns(RestTestData.GetSingleWorkItemByID());
+            azureDevOpsProvider.Setup(t => t.GetWorkItem(297)).Returns(RestTestData.GetSingleWorkItemByID());
             var engine = new AzureDevOpsEventsProcessor.Dsl.DslProcessor();
 
             // act
             engine.RunScript(
-                @"TestDataFiles\Scripts\tfs\api\loadwi.py",
-                tfsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\api\loadwi.py",
+                azureDevOpsProvider.Object,
                 emailProvider.Object,
                 eventDataProvider.Object);
 
@@ -56,17 +56,17 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             // arrange
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var engine = new AzureDevOpsEventsProcessor.Dsl.DslProcessor();
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
-            tfsProvider.Setup(t => t.GetBuildDetails(It.IsAny<int>())).Returns(RestTestData.GetBuildDetails());
+            azureDevOpsProvider.Setup(t => t.GetBuildDetails(It.IsAny<int>())).Returns(RestTestData.GetBuildDetails());
 
             // act
-            engine.RunScript(@"TestDataFiles\Scripts\tfs\api\tagbuild.py", tfsProvider.Object, emailProvider.Object, eventDataProvider.Object);
+            engine.RunScript(@"TestDataFiles\Scripts\AzureDevOps\api\tagbuild.py", azureDevOpsProvider.Object, emailProvider.Object, eventDataProvider.Object);
 
             // assert
-            tfsProvider.Verify(t => t.AddBuildTag(It.IsAny<Uri>(), "The Tag"));
+            azureDevOpsProvider.Verify(t => t.AddBuildTag(It.IsAny<Uri>(), "The Tag"));
             Assert.AreEqual(
                 "Set tag for build for '123'" + Environment.NewLine,
                 consoleOut.ToString());
@@ -81,16 +81,16 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
-            tfsProvider.Setup(t => t.GetChangesetDetails(7)).Returns(RestTestData.GetChangeSetDetails());
+            azureDevOpsProvider.Setup(t => t.GetChangesetDetails(7)).Returns(RestTestData.GetChangeSetDetails());
             var engine = new AzureDevOpsEventsProcessor.Dsl.DslProcessor();
 
             // act
             engine.RunScript(
-                @"TestDataFiles\Scripts\tfs\api\loadchangeset.py",
-                tfsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\api\loadchangeset.py",
+                azureDevOpsProvider.Object,
                 emailProvider.Object,
                 eventDataProvider.Object);
 
@@ -108,17 +108,17 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
-            tfsProvider.Setup(t => t.GetPushDetails("3c4e22ee-6148-45a3-913b-454009dac91d", 73)).Returns(RestTestData.GetPushDetails());
-            tfsProvider.Setup(t => t.GetCommitDetails(It.IsAny<Uri>())).Returns(RestTestData.GetCommitDetails());
+            azureDevOpsProvider.Setup(t => t.GetPushDetails("3c4e22ee-6148-45a3-913b-454009dac91d", 73)).Returns(RestTestData.GetPushDetails());
+            azureDevOpsProvider.Setup(t => t.GetCommitDetails(It.IsAny<Uri>())).Returns(RestTestData.GetCommitDetails());
             var engine = new AzureDevOpsEventsProcessor.Dsl.DslProcessor();
 
             // act
             engine.RunScript(
-                @"TestDataFiles\Scripts\tfs\api\loadpush.py",
-                tfsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\api\loadpush.py",
+                azureDevOpsProvider.Object,
                 emailProvider.Object,
                 eventDataProvider.Object);
 
@@ -137,10 +137,10 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
-            tfsProvider.Setup(t => t.CreateWorkItem(
+            azureDevOpsProvider.Setup(t => t.CreateWorkItem(
                 It.IsAny<string>(),
                 It.IsAny<string>(),
                 It.IsAny < Dictionary<string, object>>())).Returns(RestTestData.CreateWorkItem());
@@ -148,13 +148,13 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
 
             // act
             engine.RunScript(
-                @"TestDataFiles\Scripts\tfs\api\createwi.py",
-                tfsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\api\createwi.py",
+                azureDevOpsProvider.Object,
                 emailProvider.Object,
                 eventDataProvider.Object);
 
             // assert
-            tfsProvider.Verify(t => t.CreateWorkItem(
+            azureDevOpsProvider.Verify(t => t.CreateWorkItem(
                   "SampleProject",
                   "Bug",
                   new Dictionary<string, object>()
@@ -176,10 +176,10 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
-            tfsProvider.Setup(t => t.CreateWorkItem(
+            azureDevOpsProvider.Setup(t => t.CreateWorkItem(
                 "tp",
                 "Bug",
                 new Dictionary<string, object>()
@@ -191,13 +191,13 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
 
             // act
             engine.RunScript(
-                @"TestDataFiles\Scripts\tfs\api\updatewi.py",
-                tfsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\api\updatewi.py",
+                azureDevOpsProvider.Object,
                 emailProvider.Object,
                 eventDataProvider.Object);
 
             // assert
-            tfsProvider.Verify(t => t.UpdateWorkItem(It.IsAny<JObject>()));
+            azureDevOpsProvider.Verify(t => t.UpdateWorkItem(It.IsAny<JObject>()));
         }
 
 
@@ -210,7 +210,7 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
 
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
             var args = new Dictionary<string, object>
@@ -221,9 +221,9 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
 
             // act
             engine.RunScript(
-                @"TestDataFiles\Scripts\tfs\alerts\fullscript.py",
+                @"TestDataFiles\Scripts\AzureDevOps\alerts\fullscript.py",
                 args,
-                tfsProvider.Object,
+                azureDevOpsProvider.Object,
                 emailProvider.Object,
                 eventDataProvider.Object);
 
@@ -241,8 +241,8 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
          
             var emailProvider = new Moq.Mock<IEmailProvider>();
             
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
-            tfsProvider.Setup(t => t.GetBuildDetails(It.IsAny<int>())).Returns(RestTestData.GetBuildDetails());
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            azureDevOpsProvider.Setup(t => t.GetBuildDetails(It.IsAny<int>())).Returns(RestTestData.GetBuildDetails());
             var engine = new AzureDevOpsEventsProcessor.Dsl.DslProcessor();
 
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
@@ -250,8 +250,8 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
 
             // act
             engine.RunScript(
-                @"TestDataFiles\Scripts\tfs\api\loadbuild.py",
-                tfsProvider.Object,
+                @"TestDataFiles\Scripts\AzureDevOps\api\loadbuild.py",
+                azureDevOpsProvider.Object,
                 emailProvider.Object,
                 eventDataProvider.Object);
 
@@ -266,16 +266,16 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             // arrange
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var engine = new AzureDevOpsEventsProcessor.Dsl.DslProcessor();
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
 
             // act
-            engine.RunScript(@"TestDataFiles\Scripts\tfs\api\keepbuild.py", tfsProvider.Object, emailProvider.Object, eventDataProvider.Object);
+            engine.RunScript(@"TestDataFiles\Scripts\AzureDevOps\api\keepbuild.py", azureDevOpsProvider.Object, emailProvider.Object, eventDataProvider.Object);
 
             // assert
-            tfsProvider.Verify(t => t.SetBuildRetension(It.IsAny<Uri>(), true));
+            azureDevOpsProvider.Verify(t => t.SetBuildRetension(It.IsAny<Uri>(), true));
             Assert.AreEqual(
                 "Set build retension for 'http://dummy/_api/build'" + Environment.NewLine,
                 consoleOut.ToString());
@@ -292,15 +292,15 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
-            tfsProvider.Setup(t => t.GetWorkItem(297)).Returns(RestTestData.GetSingleWorkItemByID());
-            tfsProvider.Setup(t => t.GetParentWorkItem(It.IsAny<JObject>())).Returns(RestTestData.GetSingleWorkItemByID());
+            azureDevOpsProvider.Setup(t => t.GetWorkItem(297)).Returns(RestTestData.GetSingleWorkItemByID());
+            azureDevOpsProvider.Setup(t => t.GetParentWorkItem(It.IsAny<JObject>())).Returns(RestTestData.GetSingleWorkItemByID());
             var engine = new AzureDevOpsEventsProcessor.Dsl.DslProcessor();
 
             // act
-            engine.RunScript(@"TestDataFiles\Scripts\tfs\api\loadparentwi.py", tfsProvider.Object, emailProvider.Object, eventDataProvider.Object);
+            engine.RunScript(@"TestDataFiles\Scripts\AzureDevOps\api\loadparentwi.py", azureDevOpsProvider.Object, emailProvider.Object, eventDataProvider.Object);
 
             // assert
             Assert.AreEqual(
@@ -320,17 +320,17 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
-            tfsProvider.Setup(t => t.GetWorkItem(297)).Returns(RestTestData.GetSingleWorkItemByID());
+            azureDevOpsProvider.Setup(t => t.GetWorkItem(297)).Returns(RestTestData.GetSingleWorkItemByID());
             // don't need to assign a value for the parent call as will return null by default
             var engine = new AzureDevOpsEventsProcessor.Dsl.DslProcessor();
 
             // act
             engine.RunScript(
-                @"TestDataFiles\Scripts\tfs\api\loadparentwi.py", 
-                tfsProvider.Object, 
+                @"TestDataFiles\Scripts\AzureDevOps\api\loadparentwi.py", 
+                azureDevOpsProvider.Object, 
                 emailProvider.Object, 
                 eventDataProvider.Object);
 
@@ -350,15 +350,15 @@ namespace AzureDevOpsEventsProcessor.Tests.Dsl
             var consoleOut = Helpers.Logging.RedirectConsoleOut();
 
             var emailProvider = new Moq.Mock<IEmailProvider>();
-            var tfsProvider = new Moq.Mock<IAzureDevOpsProvider>();
+            var azureDevOpsProvider = new Moq.Mock<IAzureDevOpsProvider>();
             var eventDataProvider = new Moq.Mock<IEventDataProvider>();
 
-            tfsProvider.Setup(t => t.GetWorkItem(It.IsAny<int>())).Returns(RestTestData.GetSingleWorkItemWithReleationshipsByID());
-            tfsProvider.Setup(t => t.GetChildWorkItems(It.IsAny<JObject>())).Returns(RestTestData.GetSetOfWorkItemsByID(false));
+            azureDevOpsProvider.Setup(t => t.GetWorkItem(It.IsAny<int>())).Returns(RestTestData.GetSingleWorkItemWithReleationshipsByID());
+            azureDevOpsProvider.Setup(t => t.GetChildWorkItems(It.IsAny<JObject>())).Returns(RestTestData.GetSetOfWorkItemsByID(false));
             var engine = new AzureDevOpsEventsProcessor.Dsl.DslProcessor();
 
             // act
-            engine.RunScript(@"TestDataFiles\Scripts\tfs\api\loadchildwi.py", tfsProvider.Object, emailProvider.Object, eventDataProvider.Object);
+            engine.RunScript(@"TestDataFiles\Scripts\AzureDevOps\api\loadchildwi.py", azureDevOpsProvider.Object, emailProvider.Object, eventDataProvider.Object);
 
             // assert
             Assert.AreEqual(
