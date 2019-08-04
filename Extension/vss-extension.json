@@ -2,6 +2,10 @@
     "manifestVersion": 1,
     "id": "BM-VSTS-ServiceHooks-DSL",
     "name": "Azure DevOps Service Hooks DSL",
+    "CustomerQnASupport": {
+        "enableqna":"true",
+        "url": "https://github.com/rfennell/AzureDevOpsServiceHookDsl/issues"
+      }, 
     "version": "2.2.16357.1",
     "publisher": "richardfennellBM",
     "galleryFlags": [
