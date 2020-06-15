@@ -1,3 +1,10 @@
+<hr>
+
+### IT IS RECOMMENDED THAT YOU CONSIDER AN ALTERNATIVE TOOL [AGGREGATOR CLI](https://github.com/tfsaggregator/aggregator-cli) AS IT IS UNDER ACTIVE DEVELOPMENT
+
+<hr>
+
+
 [![Release Status - VSTSServiceHookDsl](https://richardfennell.vsrm.visualstudio.com/_apis/public/Release/badge/670b3a60-2021-47ab-a88b-d76ebd888a2f/12/21)](https://richardfennell.visualstudio.com/GitHub/GitHub%20Team/_releases2?definitionId=12&view=mine&_a=releases)
 
 This project replace the my [original Codeplex Repo](https://tfsalertsdsl.codeplex.com) (now moved to [GitHub](https://github.com/rfennell/tfsalertsdsl) as Codeplex is being depricated and is now read-only), which supported the older SOAP based alerts model. If you need to use this older SOAP model use this older project, *but be warned it is not under active support*. 
